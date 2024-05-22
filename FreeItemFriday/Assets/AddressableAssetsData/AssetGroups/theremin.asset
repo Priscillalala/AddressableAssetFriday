@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: theremin
   m_EditorClassIdentifier: 
-  m_GroupName: theremin-a
+  m_GroupName: theremin
   m_Data:
     m_SerializedData: []
   m_GUID: 8a1f99e2faba005478960582f55e0f5b
@@ -20,10 +20,12 @@ MonoBehaviour:
   - m_GUID: 815fe8ff725cee94593172ea6a38f055
     m_Address: FreeItemFriday/ItemContent/Theremin
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - ContentPack:FreeItemFriday.Theremin
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 6fed26da47139c742a519314040574d8, type: 2}
     - {fileID: 11400000, guid: cb05149aff1f5074eb6ad7a4c0cc253c, type: 2}
+    - {fileID: 11400000, guid: 38470641f909f6149a7fee6c0f0f7b48, type: 2}

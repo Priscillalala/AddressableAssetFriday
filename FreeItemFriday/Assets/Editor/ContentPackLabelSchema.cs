@@ -13,20 +13,33 @@ namespace FreeItemFriday.Editor
     [DisplayName("Content Pack Label")]
     public class ContentPackLabelSchema : AddressableAssetGroupSchema
     {
-        public string Identifier { get; set; }
+        [SerializeField]
+        private string _identifier;
 
-        private string Label => "ContentPack:" + Identifier;
+        public string Identifier
+        {
+            get => _identifier;
+            set
+            {
+                if (_identifier != value)
+                {
+                    _identifier = value;
+                    SetDirty(true);
+                }
+            }
+        }
 
         public override void OnGUI()
         {
-            string identifier = EditorGUILayout.TextField("Identifier", Identifier);
-            if (Identifier != identifier)
+            Identifier = EditorGUILayout.TextField("Identifier", Identifier);
+        }
+
+        public void ApplyLabel()
+        {
+            string label = "ContentPack:" + Identifier;
+            foreach (AddressableAssetEntry entry in Group.entries)
             {
-                if (Group)
-                {
-                    Group.
-                }
-                Identifier = identifier;
+                entry.SetLabel(label, true, true);
             }
         }
     }

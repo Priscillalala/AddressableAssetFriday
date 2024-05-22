@@ -15,36 +15,17 @@ namespace FreeItemFriday.Editor
         public static void RefreshLabels()
         {
             Debug.Log("Refreshing Labels..");
-            var settings = AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>("Assets/AddressableAssetsData/AddressableAssetSettings.asset");
-            var entries = settings.groups.SelectMany(x => x.entries);
-            foreach (AddressableAssetEntry entry in entries)
+            Debug.Log("transform:");
+            string[] assets = AssetDatabase.FindAssets($"t:Light", new[] { "Assets/FreeItemFriday" });
+            foreach (string guid in assets)
             {
-                Debug.Log($"Entry: {entry.AssetPath}, target: {entry.TargetAsset?.name}, type:{entry.TargetAsset?.GetType().Name} ");
+                Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
             }
-            //AssetDatabase.IsValidFolder()
-
-            foreach (var assetTypeLabel in AddressablesLabels.assetTypeLabels)
+            Debug.Log("prefab:");
+            assets = AssetDatabase.FindAssets($"t:prefab", new[] { "Assets/FreeItemFriday" });
+            foreach (string guid in assets)
             {
-                if (assetTypeLabel.Key == typeof(Shader))
-                {
-                    continue;
-                }
-                string[] assets = AssetDatabase.FindAssets($"t:{assetTypeLabel.Key.Name}", new[] { "Assets/FreeItemFriday" });
-                foreach (string guid in assets)
-                {
-                    AddressableAssetEntry entry = settings.FindAssetEntry(guid);
-                    if (entry != null)
-                    {
-                        string path = Path.GetDirectoryName(AssetDatabase.GUIDToAssetPath(guid)).Substring(7);
-                        Debug.Log(path);
-                        string contentPackLabel = $"ContentPack:{path.Replace('\\', '.')}";
-                        //entry.SetLabel(contentPackLabel, true, true);
-                        if (!entry.SetLabel(assetTypeLabel.Value, true, true))
-                        {
-                            Debug.LogWarning($"failed to set label {assetTypeLabel.Value} on {path}!");
-                        }
-                    }
-                }
+                Debug.Log(AssetDatabase.GUIDToAssetPath(guid));
             }
         }
     }
