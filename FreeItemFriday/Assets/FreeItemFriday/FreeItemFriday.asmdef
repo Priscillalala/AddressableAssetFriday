@@ -1,0 +1,19 @@
+{
+    "name": "FreeItemFriday",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "BepInEx.dll",
+        "MMHOOK_RoR2.dll",
+        "HGCSharpUtils.dll",
+        "RoR2.dll",
+        "RoR2BepInExPack.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

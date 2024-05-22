@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: Theremin
+  m_EditorClassIdentifier: 
+  deprecatedTier: 1
+  _itemTierDef: {fileID: 0}
+  nameToken: FIF_ITEM_THEREMIN_NAME
+  pickupToken: FIF_ITEM_THEREMIN_PICKUP
+  descriptionToken: FIF_ITEM_THEREMIN_DESC
+  loreToken: FIF_ITEM_THEREMIN_LORE
+  unlockableDef: {fileID: 0}
+  pickupModelPrefab: {fileID: 1073277640976277668, guid: 2a4f3bd1230969643b01364629f336a2,
+    type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: 04e7db154149fc741909aa35225424dc, type: 3}
+  hidden: 0
+  canRemove: 1
+  tags: 010000001100000012000000
+  requiredExpansion: {fileID: 11400000, guid: ac60d75f73435b344948fadb51582836, type: 2}
