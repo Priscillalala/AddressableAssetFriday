@@ -29,10 +29,10 @@ namespace FreeItemFriday.Editor
             }
         }
 
-        public override void OnGUI()
+        /*public override void OnGUI()
         {
             Identifier = EditorGUILayout.TextField("Identifier", Identifier);
-        }
+        }*/
 
         public void ApplyLabel()
         {

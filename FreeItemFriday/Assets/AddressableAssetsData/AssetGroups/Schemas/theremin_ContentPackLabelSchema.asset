@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: theremin_ContentPackLabelSchema
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: 3b7d7d1b083eff940bdd55acfdbb2232, type: 2}
+  _identifier: FreeItemFriday.Theremin

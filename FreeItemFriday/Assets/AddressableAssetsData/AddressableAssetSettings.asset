@@ -79,7 +79,13 @@ MonoBehaviour:
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
-    m_LabelNames: []
+    m_LabelNames:
+    - ItemDef
+    - ExpansionDef
+    - CharacterBody
+    - NetworkedObject
+    - ContentPack:FreeItemFriday.BaseContent
+    - ContentPack:FreeItemFriday.Theremin
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: d2098996fd0b9c1448e68bb7a5953111, type: 2}

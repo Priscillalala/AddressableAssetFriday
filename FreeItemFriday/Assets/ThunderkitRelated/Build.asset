@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6773820798040390938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd401bd8b66d6e44be6eecbff5b773f, type: 3}
+  m_Name: ApplyAssetTypeLabels
+  m_EditorClassIdentifier: 
+  Active: 1
+  Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
+  RootFolderPaths:
+  - Assets/FreeItemFriday
+  IncludeShaders: 0
 --- !u!114 &-6712613522754903974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +77,9 @@ MonoBehaviour:
   Data:
   - {fileID: -2826169011413017941}
   - {fileID: 1306578581911560120}
-  - {fileID: -5602947243512081970}
   - {fileID: -6712613522754903974}
+  - {fileID: -6773820798040390938}
+  - {fileID: -5602947243512081970}
   QuickAccess: 1
   manifest: {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
 --- !u!114 &1306578581911560120

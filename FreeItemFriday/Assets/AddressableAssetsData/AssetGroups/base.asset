@@ -21,11 +21,18 @@ MonoBehaviour:
     m_Address: FreeItemFriday/Base
     m_ReadOnly: 0
     m_SerializedLabels:
+    - CharacterBody
+    - NetworkedObject
+    - ContentPack:FreeItemFriday.BaseContent
+  - m_GUID: ac60d75f73435b344948fadb51582836
+    m_Address: FreeItemFriday/Base/FreeItemFriday.asset
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - ExpansionDef
     - ContentPack:FreeItemFriday.BaseContent
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: fd53d5e2619f8f3438d2439dc9902d64, type: 2}
     - {fileID: 11400000, guid: 6947e330172973d4b8772aa9f7fa307d, type: 2}
     - {fileID: 11400000, guid: f326c348f2a561e45881981f1a26e529, type: 2}

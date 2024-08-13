@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: base_ContentPackLabelSchema
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: c834406060c2b5f4980227a35c5e86c3, type: 2}
+  _identifier: FreeItemFriday.BaseContent

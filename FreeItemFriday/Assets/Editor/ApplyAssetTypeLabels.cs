@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using RoR2.ContentManagement;
 using ThunderKit.Core.Attributes;
 using System;
+using System.Reflection;
 
 namespace FreeItemFriday.Editor
 {
@@ -23,6 +24,8 @@ namespace FreeItemFriday.Editor
 
         public override Task Execute(Pipeline pipeline)
         {
+            FieldInfo labelsField = typeof(AddressableAssetEntry).GetField("m_Labels", BindingFlags.Instance | BindingFlags.NonPublic);
+            Debug.Log(labelsField.Name);
             if (Addressables)
             {
                 foreach (var assetTypeLabel in AddressablesLabels.assetTypeLabels)
@@ -34,9 +37,19 @@ namespace FreeItemFriday.Editor
                     string[] assets = AssetDatabase.FindAssets($"t:{assetTypeLabel.Key.Name}", RootFolderPaths);
                     foreach (string guid in assets)
                     {
-                        AddressableAssetEntry entry = Addressables.FindAssetEntry(guid);
+                        AddressableAssetEntry entry = Addressables.FindAssetEntry(guid, true);
                         if (entry != null)
                         {
+                            Debug.Log($"{AssetDatabase.GUIDToAssetPath(guid)}, read only: {entry.ReadOnly}, parent entry: {entry.ParentEntry.AssetPath}");
+                            if (entry.ParentEntry != null)
+                            {
+                                Addressables.MoveEntry(entry, entry.ParentEntry.parentGroup, entry.ReadOnly);
+                                labelsField.SetValue(entry, new HashSet<string>(entry.labels));
+                            }
+                            /*if (entry.ParentEntry != null && entry.labels == entry.ParentEntry.labels)
+                            {
+                                Debug.LogWarning($"same labels!");
+                            }*/
                             if (!entry.SetLabel(assetTypeLabel.Value, true, true))
                             {
                                 Debug.LogWarning($"failed to set label {assetTypeLabel.Value} on {AssetDatabase.GUIDToAssetPath(guid)}!");
@@ -47,7 +60,7 @@ namespace FreeItemFriday.Editor
                 string[] prefabs = AssetDatabase.FindAssets($"t:prefab", RootFolderPaths);
                 foreach (string guid in prefabs)
                 {
-                    AddressableAssetEntry entry = Addressables.FindAssetEntry(guid);
+                    AddressableAssetEntry entry = Addressables.FindAssetEntry(guid, true);
                     if (entry != null)
                     {
                         GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(guid));
@@ -68,6 +81,11 @@ namespace FreeItemFriday.Editor
                 }
             }
             return Task.CompletedTask;
+        }
+
+        private static void TrySetLabel(AddressableAssetEntry entry, string label)
+        {
+            
         }
     }
 }

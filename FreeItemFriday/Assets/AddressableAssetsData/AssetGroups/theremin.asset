@@ -22,10 +22,15 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ContentPack:FreeItemFriday.Theremin
+  - m_GUID: e4834efc47fb93c47995fbddb9de7782
+    m_Address: FreeItemFriday/ItemContent/Theremin/Theremin.asset
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - ItemDef
+    - ContentPack:FreeItemFriday.Theremin
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 6fed26da47139c742a519314040574d8, type: 2}
     - {fileID: 11400000, guid: cb05149aff1f5074eb6ad7a4c0cc253c, type: 2}
     - {fileID: 11400000, guid: 38470641f909f6149a7fee6c0f0f7b48, type: 2}
