@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -11,6 +12,7 @@ using ThunderKit.Core.Attributes;
 using System;
 using System.Reflection;
 using UnityEditor.AddressableAssets;
+using ThunderKit.Core.Paths;
 
 namespace FreeItemFriday.Editor
 {
@@ -79,3 +81,4 @@ namespace FreeItemFriday.Editor
         }
     }
 }
+#endif

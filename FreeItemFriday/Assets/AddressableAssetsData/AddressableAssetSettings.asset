@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: 6ae65a225d4d03a468cee4428c3feda0
+  m_DefaultGroup: 9cdb39755af416a4585143490fc190a2
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
@@ -30,14 +30,13 @@ MonoBehaviour:
   m_MonoScriptBundleNaming: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 5b89412cb03f3a44d9e252e0fd707522
+    m_Id: 6c505f17db72edc42a862e83828f276a
   m_RemoteCatalogLoadPath:
-    m_Id: 5798cd0dbfeb7f44aaa228acf04c502d
+    m_Id: 4631d250f20727f429137e4666901aec
   m_ContentStateBuildPath: 
-  m_overridePlayerVersion: 
+  m_overridePlayerVersion: tk
   m_GroupAssets:
   - {fileID: 11400000, guid: 39e98422874c73d4dae3a116e6b8f662, type: 2}
-  - {fileID: 11400000, guid: 7b3e0c0a8feb39648a375c9d90a87391, type: 2}
   - {fileID: 11400000, guid: c834406060c2b5f4980227a35c5e86c3, type: 2}
   - {fileID: 11400000, guid: 3b7d7d1b083eff940bdd55acfdbb2232, type: 2}
   m_BuildSettings:
@@ -54,9 +53,9 @@ MonoBehaviour:
       - m_Id: dad83a31a5f1d54408d742123a804f4d
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 6c505f17db72edc42a862e83828f276a
-        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+        m_Value: ThunderKit/Builds/FreeItemFriday/1.0.0/aa/[BuildTarget]
       - m_Id: 4631d250f20727f429137e4666901aec
-        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+        m_Value: ThunderKit/Builds/FreeItemFriday/1.0.0/aa/[BuildTarget]
       - m_Id: 5b89412cb03f3a44d9e252e0fd707522
         m_Value: ServerData/[BuildTarget]
       - m_Id: 5798cd0dbfeb7f44aaa228acf04c502d
@@ -80,12 +79,10 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - ItemDef
-    - ExpansionDef
-    - CharacterBody
-    - NetworkedObject
     - ContentPack:FreeItemFriday.BaseContent
     - ContentPack:FreeItemFriday.Theremin
+    - ItemDef
+    - ExpansionDef
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: d2098996fd0b9c1448e68bb7a5953111, type: 2}

@@ -31,7 +31,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
---- !u!114 &-5602947243512081970
+--- !u!114 &-5200200439701030455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,6 +62,26 @@ MonoBehaviour:
   releaseBuild: 0
   assemblyArtifactPath: <AssemblyStaging>
   buildTarget: 5
+--- !u!114 &-1295162190907333583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b1dc8cd33f5a545a6d1d5ccf0e636d, type: 3}
+  m_Name: BuildAddressables
+  m_EditorClassIdentifier: 
+  Active: 1
+  PerManifest: 1
+  ListType: 1
+  Manifests:
+  - {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
+  Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
+  BuildPath: <BuildPath>/aa
+  LoadPath: <BuildPath>/aa
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,13 +95,35 @@ MonoBehaviour:
   m_Name: Build
   m_EditorClassIdentifier: 
   Data:
+  - {fileID: 850509238825502605}
   - {fileID: -2826169011413017941}
-  - {fileID: 1306578581911560120}
   - {fileID: -6712613522754903974}
+  - {fileID: -5200200439701030455}
   - {fileID: -6773820798040390938}
-  - {fileID: -5602947243512081970}
+  - {fileID: -1295162190907333583}
+  - {fileID: 1306578581911560120}
   QuickAccess: 1
   manifest: {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
+--- !u!114 &850509238825502605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d65cc226c348d45aa1c6dddf3600a6, type: 3}
+  m_Name: Delete
+  m_EditorClassIdentifier: 
+  Active: 0
+  PerManifest: 1
+  ListType: 1
+  Manifests:
+  - {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
+  Recursive: 1
+  IsFatal: 0
+  Path: <BuildPath>
 --- !u!114 &1306578581911560120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +141,7 @@ MonoBehaviour:
   ListType: 1
   Manifests:
   - {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
-  ReplaceDirectory: 0
+  ReplaceDirectory: 1
   Recursive: 1
   SourceRequired: 0
   EstablishDestination: 1
