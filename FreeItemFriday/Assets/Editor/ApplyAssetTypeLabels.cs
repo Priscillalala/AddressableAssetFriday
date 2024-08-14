@@ -19,7 +19,7 @@ namespace FreeItemFriday.Editor
     [PipelineSupport(typeof(Pipeline))]
     public class ApplyAssetTypeLabels : PipelineJob
     {
-        public AddressableAssetSettings Addressables = AddressableAssetSettingsDefaultObject.Settings;
+        public AddressableAssetSettings Addressables => AddressableAssetSettingsDefaultObject.Settings;
         [PathReferenceResolver]
         public string[] RootFolderPaths = new[] { "Assets" };
         public bool IncludeShaders = false;

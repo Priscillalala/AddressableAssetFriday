@@ -14,7 +14,7 @@ namespace FreeItemFriday.Editor
     [PipelineSupport(typeof(Pipeline))]
     public class ResetLabels : PipelineJob
     {
-        public AddressableAssetSettings Addressables = AddressableAssetSettingsDefaultObject.Settings;
+        public AddressableAssetSettings Addressables => AddressableAssetSettingsDefaultObject.Settings;
 
         public override Task Execute(Pipeline pipeline)
         {

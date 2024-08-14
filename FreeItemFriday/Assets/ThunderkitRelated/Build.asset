@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ApplyAssetTypeLabels
   m_EditorClassIdentifier: 
   Active: 1
-  Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   RootFolderPaths:
   - Assets/FreeItemFriday
   IncludeShaders: 0
@@ -30,7 +29,6 @@ MonoBehaviour:
   m_Name: ResetLabels
   m_EditorClassIdentifier: 
   Active: 1
-  Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
 --- !u!114 &-5200200439701030455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,7 +42,6 @@ MonoBehaviour:
   m_Name: ApplyContentPackLabels
   m_EditorClassIdentifier: 
   Active: 1
-  Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
 --- !u!114 &-2826169011413017941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,9 +76,8 @@ MonoBehaviour:
   ListType: 1
   Manifests:
   - {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
-  Addressables: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   BuildPath: <BuildPath>/aa
-  LoadPath: <BuildPath>/aa
+  LoadPath: '{FreeItemFriday.FreeItemFridayPlugin.RuntimeDirectory}/aa'
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
