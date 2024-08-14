@@ -7,13 +7,13 @@
       "dependencies": {}
     },
     "com.passivepicasso.thunderkit": {
-      "version": "https://github.com/PassivePicasso/ThunderKit.git#8.0.6",
+      "version": "https://github.com/PassivePicasso/ThunderKit.git#9.0.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.scriptablebuildpipeline": "1.16.1"
       },
-      "hash": "c63a5c279e98d1e888bad5f3038db94a4140c39d"
+      "hash": "2f048021a13d98a8600898a6f4203cfe18554f36"
     },
     "com.unity.addressables": {
       "version": "1.18.15",
@@ -129,11 +129,11 @@
       "dependencies": {}
     },
     "riskofthunder-ror2importextensions": {
-      "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.4.0",
+      "version": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.5.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "56521f0b71bfa6aa3f1426394c9e08229ba9edb3"
+      "hash": "b404432bd676cb9f6aabb66eab6003a6b8374f30"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

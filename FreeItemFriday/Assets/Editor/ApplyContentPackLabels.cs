@@ -6,13 +6,14 @@ using System.IO;
 using UnityEditor.AddressableAssets.Settings;
 using ThunderKit.Core.Pipelines;
 using System.Threading.Tasks;
+using UnityEditor.AddressableAssets;
 
 namespace FreeItemFriday.Editor
 {
     [PipelineSupport(typeof(Pipeline))]
     public class ApplyContentPackLabels : PipelineJob
     {
-        public AddressableAssetSettings Addressables;
+        public AddressableAssetSettings Addressables = AddressableAssetSettingsDefaultObject.Settings;
 
         public override Task Execute(Pipeline pipeline)
         {

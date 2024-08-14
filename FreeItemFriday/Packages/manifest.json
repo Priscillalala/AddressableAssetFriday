@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "com.passivepicasso.thunderkit": "https://github.com/PassivePicasso/ThunderKit.git#8.0.6",
+    "com.passivepicasso.thunderkit": "https://github.com/PassivePicasso/ThunderKit.git#9.0.0",
     "com.unity.addressables": "1.18.15",
     "com.unity.ide.rider": "1.2.1",
     "com.unity.ide.visualstudio": "2.0.14",
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.postprocessing": "2.3.0",
-    "riskofthunder-ror2importextensions": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.4.0",
+    "riskofthunder-ror2importextensions": "https://github.com/risk-of-thunder/RoR2ImportExtensions.git#1.5.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
