@@ -80,7 +80,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - ContentPack:FreeItemFriday.BaseContent
-    - ContentPack:FreeItemFriday.Theremin
+    - ContentPack:FreeItemFriday.ItemContent.Theremin
     - ItemDef
     - ExpansionDef
   m_SchemaTemplates: []

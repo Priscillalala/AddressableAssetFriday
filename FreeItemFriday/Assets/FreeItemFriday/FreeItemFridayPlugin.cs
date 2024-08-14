@@ -2,6 +2,15 @@ using BepInEx;
 using Path = System.IO.Path;
 using UnityEngine.AddressableAssets;
 using RoR2;
+using RoR2.ContentManagement;
+using System.Security;
+using System.Security.Permissions;
+
+[module: UnverifiableCode]
+#pragma warning disable CS0618 // Type or member is obsolete
+[assembly: SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification = true)]
+#pragma warning restore CS0618 // Type or member is obsolete
+[assembly: HG.Reflection.SearchableAttribute.OptIn]
 
 namespace FreeItemFriday
 {
@@ -29,8 +38,11 @@ namespace FreeItemFriday
             }
 			var theremin = Addressables.LoadAssetAsync<ItemDef>("FreeItemFriday/ItemContent/Theremin/Theremin.asset").WaitForCompletion();
 			Logger.LogMessage(theremin.nameToken);
-			var testObject = Addressables.LoadAssetAsync<MyVeryOwnScriptableObject>("FreeItemFriday/Base/TestObject.asset").WaitForCompletion();
-			Logger.LogMessage(testObject.data);
+			ContentManager.collectContentPackProviders += add =>
+			{
+				add(new FreeItemFridayContent());
+				add(new ItemContent.ThereminContent());
+			};
 		}	
 	}
 }
