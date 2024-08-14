@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -11,35 +12,72 @@ using UnityEditor.AddressableAssets;
 using ThunderKit.Core.Attributes;
 using ThunderKit.Core.Paths;
 using UnityEditor.AddressableAssets.Build.DataBuilders;
+using System.Reflection;
 
 namespace FreeItemFriday.Editor
 {
     [PipelineSupport(typeof(Pipeline))]
-    public class BuildAddressables : FlowPipelineJob
+    [ManifestProcessor]
+    [RequiresManifestDatumType(typeof(AddressablesDefinition))]
+    public class BuildAddressables : PipelineJob
     {
         public AddressableAssetSettings Addressables => AddressableAssetSettingsDefaultObject.Settings;
 
         [PathReferenceResolver]
-        public string BuildPath;
-        [PathReferenceResolver]
-        public string LoadPath;
+        public string BuildArtifactPath = "<AddressablesStaging>";
+        public bool compileScripts = false;
+        public bool clearHashFile = true;
 
-        protected override Task ExecuteInternal(Pipeline pipeline)
+        public override Task Execute(Pipeline pipeline)
         {
-            if (Addressables)
+            var definition = pipeline.Manifest.Data.OfType<AddressablesDefinition>().FirstOrDefault();
+            if (definition && Addressables)
             {
-                string resolvedBuildPath = BuildPath.Resolve(pipeline, this);
-                string resolvedLoadPath = LoadPath.Resolve(pipeline, this);
-                if (Directory.Exists(resolvedBuildPath))
-                {
-                    Directory.Delete(resolvedBuildPath, true);
-                }
+                string resolvedArtifactPath = BuildArtifactPath.Resolve(pipeline, this);
+
+                //string resolvedBuildPath = BuildPath.Resolve(pipeline, this);
+                string resolvedLoadPath = definition.RuntimeLoadPath.Resolve(pipeline, this);
                 Addressables.BuildRemoteCatalog = true;
-                Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogBuildPath.GetName(Addressables), resolvedBuildPath);
+                Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogBuildPath.GetName(Addressables), resolvedArtifactPath);
                 Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogLoadPath.GetName(Addressables), resolvedLoadPath);
                 Addressables.OverridePlayerVersion = pipeline.Manifest.Identity.Name;
                 Addressables.ActivePlayerDataBuilderIndex = Addressables.DataBuilders.FindIndex(s => s.GetType() == typeof(BuildScriptPackedMode));
-                AddressableAssetSettings.BuildPlayerContent();
+                void BuildAddressables()
+                {
+                    AddressableAssetSettings.BuildPlayerContent(out var result);
+                    if (string.IsNullOrEmpty(result.Error))
+                    {
+                        pipeline.Log(LogLevel.Information, $"Finished Addressables build in {result.Duration} seconds");
+                    }
+                    else
+                    {
+                        pipeline.Log(LogLevel.Error, $"Error while building Addressables: {result.Error}");
+                    }
+                }
+                if (compileScripts)
+                {
+                    BuildAddressables();
+                }
+                else
+                {
+                    FieldInfo s_SkipCompilePlayerScripts = typeof(BuildScriptPackedMode).GetField("s_SkipCompilePlayerScripts", BindingFlags.Static | BindingFlags.NonPublic);
+                    s_SkipCompilePlayerScripts.SetValue(null, true);
+                    BuildAddressables();
+                    s_SkipCompilePlayerScripts.SetValue(null, false);
+                }
+                if (clearHashFile)
+                {
+                    string hashPath = Path.Combine(resolvedArtifactPath, $"catalog_{Addressables.OverridePlayerVersion}.hash");
+                    if (File.Exists(hashPath))
+                    {
+                        File.Delete(hashPath);
+                    }
+                }
+                foreach (string stagingPath in definition.StagingPaths)
+                {
+                    string resolvedStagingPath = stagingPath.Resolve(pipeline, this);
+                    FileUtil.ReplaceDirectory(resolvedArtifactPath, resolvedStagingPath);
+                }
                 /*string catalogPath = Path.Combine(resolvedBuildPath, $"catalog_{Addressables.OverridePlayerVersion}.json");
                 if (File.Exists(catalogPath))
                 {
@@ -48,11 +86,6 @@ namespace FreeItemFriday.Editor
                     File.Move(catalogPath, Path.Combine(resolvedBuildPath, "catalog.json"));
                     Debug.Log("moved catalog");
                 }*/
-                string hashPath = Path.Combine(resolvedBuildPath, $"catalog_{Addressables.OverridePlayerVersion}.hash");
-                if (File.Exists(hashPath))
-                {
-                    File.Delete(hashPath);
-                }
             }
             return Task.CompletedTask;
         }

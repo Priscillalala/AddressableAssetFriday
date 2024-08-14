@@ -53,7 +53,7 @@ MonoBehaviour:
       - m_Id: dad83a31a5f1d54408d742123a804f4d
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 6c505f17db72edc42a862e83828f276a
-        m_Value: ThunderKit/Builds/FreeItemFriday/1.0.0/aa
+        m_Value: ThunderKit/AddressablesStaging
       - m_Id: 4631d250f20727f429137e4666901aec
         m_Value: '{FreeItemFriday.FreeItemFridayPlugin.RuntimeDirectory}/aa'
       - m_Id: 5b89412cb03f3a44d9e252e0fd707522

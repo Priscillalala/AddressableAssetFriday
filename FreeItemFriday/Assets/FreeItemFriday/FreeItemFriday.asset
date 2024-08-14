@@ -50,5 +50,21 @@ MonoBehaviour:
   Data:
   - {fileID: -5316771874806157072}
   - {fileID: -6093656968723049575}
+  - {fileID: 5041725220934130854}
   identity: {fileID: -5316771874806157072}
   QuickAccess: 1
+--- !u!114 &5041725220934130854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc7e8753ee26ef448f3e6b34c0d4c02, type: 3}
+  m_Name: AddressablesDefinition
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPath>/aa
+  RuntimeLoadPath: '{FreeItemFriday.FreeItemFridayPlugin.RuntimeDirectory}/aa'
