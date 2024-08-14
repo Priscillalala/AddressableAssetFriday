@@ -27,7 +27,6 @@ namespace FreeItemFriday.Editor
         public override Task Execute(Pipeline pipeline)
         {
             FieldInfo labelsField = typeof(AddressableAssetEntry).GetField("m_Labels", BindingFlags.Instance | BindingFlags.NonPublic);
-            Debug.Log(labelsField.Name);
             if (Addressables)
             {
                 foreach (var assetTypeLabel in AddressablesLabels.assetTypeLabels)

@@ -73,6 +73,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Active: 1
   BuildArtifactPath: <AddressablesStaging>
+  compileScripts: 0
+  clearHashFile: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

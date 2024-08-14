@@ -19,7 +19,7 @@ namespace FreeItemFriday.Editor
     [PipelineSupport(typeof(Pipeline))]
     [ManifestProcessor]
     [RequiresManifestDatumType(typeof(AddressablesDefinition))]
-    public class BuildAddressables : PipelineJob
+    public class StageAddressables : PipelineJob
     {
         public AddressableAssetSettings Addressables => AddressableAssetSettingsDefaultObject.Settings;
 
@@ -78,14 +78,6 @@ namespace FreeItemFriday.Editor
                     string resolvedStagingPath = stagingPath.Resolve(pipeline, this);
                     FileUtil.ReplaceDirectory(resolvedArtifactPath, resolvedStagingPath);
                 }
-                /*string catalogPath = Path.Combine(resolvedBuildPath, $"catalog_{Addressables.OverridePlayerVersion}.json");
-                if (File.Exists(catalogPath))
-                {
-                    Debug.Log("catalog exists");
-                    Debug.Log(catalogPath);
-                    File.Move(catalogPath, Path.Combine(resolvedBuildPath, "catalog.json"));
-                    Debug.Log("moved catalog");
-                }*/
             }
             return Task.CompletedTask;
         }
