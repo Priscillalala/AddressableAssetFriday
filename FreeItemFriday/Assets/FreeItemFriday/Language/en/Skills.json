@@ -1,0 +1,6 @@
+{
+	"strings": {
+		"FIF_SKILL_REBOOT_NAME": "Reboot",
+		"FIF_SKILL_REBOOT_DESC": "<style=cIsHealth>Power down</style> for <style=cIsHealth>{Reboot.duration}</style> seconds to <style=cIsUtility>cleanse all debuffs</style>, <style=cIsDamage>reset all your cooldowns</style>, and <style=cIsHealing>restore missing health</style>."
+	}
+}

@@ -39,6 +39,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39e98422874c73d4dae3a116e6b8f662, type: 2}
   - {fileID: 11400000, guid: c834406060c2b5f4980227a35c5e86c3, type: 2}
   - {fileID: 11400000, guid: 3b7d7d1b083eff940bdd55acfdbb2232, type: 2}
+  - {fileID: 11400000, guid: fd27bcab87c41354bb774ad9f6fe88a7, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -85,6 +86,10 @@ MonoBehaviour:
     - ContentPack:FreeItemFriday.BaseContent
     - ItemDef
     - ContentPack:FreeItemFriday.ItemContent.Theremin
+    - EntityStateConfiguration
+    - SkillFamily
+    - SkillDef
+    - ContentPack:FreeItemFriday.SkillContent.Reboot
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: d2098996fd0b9c1448e68bb7a5953111, type: 2}

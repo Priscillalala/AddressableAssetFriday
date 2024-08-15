@@ -42,6 +42,7 @@ namespace FreeItemFriday
 			{
 				add(new FreeItemFridayContent());
 				add(new ItemContent.ThereminContent());
+				add(new SkillContent.RebootContent());
 			};
 			Language.collectLanguageRootFolders += list =>
 			{
