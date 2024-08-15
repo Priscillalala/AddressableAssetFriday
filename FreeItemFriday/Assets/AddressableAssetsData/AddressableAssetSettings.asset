@@ -87,7 +87,6 @@ MonoBehaviour:
     - ItemDef
     - ContentPack:FreeItemFriday.ItemContent.Theremin
     - EntityStateConfiguration
-    - SkillFamily
     - SkillDef
     - ContentPack:FreeItemFriday.SkillContent.Reboot
   m_SchemaTemplates: []

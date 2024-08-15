@@ -16,7 +16,8 @@
         "RoR2.dll",
         "RoR2BepInExPack.dll",
         "Wwise.dll",
-        "UnityEngine.UI.dll"
+        "UnityEngine.UI.dll",
+        "HGUnityUtils.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
