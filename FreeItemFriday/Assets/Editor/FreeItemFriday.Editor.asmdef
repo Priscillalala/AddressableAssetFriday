@@ -11,7 +11,8 @@
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "RoR2.dll"
+        "RoR2.dll",
+        "HGUnityUtils.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

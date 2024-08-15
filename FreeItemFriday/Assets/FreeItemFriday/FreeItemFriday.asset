@@ -68,3 +68,117 @@ MonoBehaviour:
   StagingPaths:
   - <BuildPath>/aa
   RuntimeLoadPath: '{FreeItemFriday.FreeItemFridayPlugin.RuntimeDirectory}/aa'
+  matchDerivedAssetTypes: 1
+  assetTypeLabels:
+  - assetType:
+      assemblyQualifiedName: RoR2.Skills.SkillFamily, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: SkillFamily
+  - assetType:
+      assemblyQualifiedName: RoR2.Skills.SkillDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: SkillDef
+  - assetType:
+      assemblyQualifiedName: RoR2.UnlockableDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: UnlockableDef
+  - assetType:
+      assemblyQualifiedName: RoR2.SurfaceDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: SurfaceDef
+  - assetType:
+      assemblyQualifiedName: RoR2.SceneDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: SceneDef
+  - assetType:
+      assemblyQualifiedName: RoR2.NetworkSoundEventDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: NetworkSoundEventDef
+  - assetType:
+      assemblyQualifiedName: RoR2.MusicTrackDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: MusicTrackDef
+  - assetType:
+      assemblyQualifiedName: RoR2.GameEndingDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: GameEndingDef
+  - assetType:
+      assemblyQualifiedName: RoR2.ItemDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: ItemDef
+  - assetType:
+      assemblyQualifiedName: RoR2.ItemTierDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: ItemTierDef
+  - assetType:
+      assemblyQualifiedName: RoR2.EquipmentDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: EquipmentDef
+  - assetType:
+      assemblyQualifiedName: RoR2.BuffDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: BuffDef
+  - assetType:
+      assemblyQualifiedName: RoR2.EliteDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: EliteDef
+  - assetType:
+      assemblyQualifiedName: RoR2.SurvivorDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: SurvivorDef
+  - assetType:
+      assemblyQualifiedName: RoR2.ArtifactDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: ArtifactDef
+  - assetType:
+      assemblyQualifiedName: RoR2.EntityStateConfiguration, RoR2, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: EntityStateConfiguration
+  - assetType:
+      assemblyQualifiedName: RoR2.ExpansionManagement.ExpansionDef, RoR2, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: ExpansionDef
+  - assetType:
+      assemblyQualifiedName: RoR2.EntitlementManagement.EntitlementDef, RoR2, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: EntitlementDef
+  - assetType:
+      assemblyQualifiedName: UnityEngine.Shader, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: Shader
+  - assetType:
+      assemblyQualifiedName: RoR2.ItemRelationshipProvider, RoR2, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: ItemRelationshipProvider
+  - assetType:
+      assemblyQualifiedName: RoR2.ItemRelationshipType, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: ItemRelationshipType
+  - assetType:
+      assemblyQualifiedName: RoR2.MiscPickupDef, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: MiscPickupDef
+  componentTypeLabels:
+  - componentType:
+      assemblyQualifiedName: RoR2.CharacterBody, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: CharacterBody
+  - componentType:
+      assemblyQualifiedName: RoR2.CharacterMaster, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: CharacterMaster
+  - componentType:
+      assemblyQualifiedName: RoR2.Projectile.ProjectileController, RoR2, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: Projectile
+  - componentType:
+      assemblyQualifiedName: RoR2.Run, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    label: GameMode
+  - componentType:
+      assemblyQualifiedName: UnityEngine.Networking.NetworkIdentity, com.unity.multiplayer-hlapi.Runtime,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+    label: NetworkedObject
+  - componentType:
+      assemblyQualifiedName: RoR2.EffectComponent, RoR2, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    label: Effect

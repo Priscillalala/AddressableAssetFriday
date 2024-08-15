@@ -14,6 +14,11 @@ using System;
 using System.Reflection;
 using UnityEditor.AddressableAssets.Build.DataBuilders;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
+using System.Linq;
+using UnityEditor.AddressableAssets.Build;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.AddressableAssets.Initialization;
+using UnityEngine.ResourceManagement.Util;
 
 namespace FreeItemFriday.Editor
 {
@@ -23,7 +28,16 @@ namespace FreeItemFriday.Editor
         private static readonly FieldInfo labelsField = typeof(AddressableAssetEntry).GetField("m_Labels", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo subAssetsField = typeof(AddressableAssetEntry).GetField("SubAssets", BindingFlags.Instance | BindingFlags.NonPublic);
 
+        private AddressablesDefinition.AssetTypeLabel[] assetTypeLabels;
+        private AddressablesDefinition.ComponentTypeLabel[] componentTypeLabels;
+
         public override string Name => "Build RoR2 Content";
+
+        public void SetAssetTypeLabels(AddressablesDefinition.AssetTypeLabel[] assetTypeLabels, AddressablesDefinition.ComponentTypeLabel[] componentTypeLabels)
+        {
+            this.assetTypeLabels = assetTypeLabels;
+            this.componentTypeLabels = componentTypeLabels;
+        }
 
         protected override string ProcessGroupSchema(AddressableAssetGroupSchema schema, AddressableAssetGroup assetGroup, AddressableAssetsBuildContext aaContext)
         {
@@ -60,20 +74,37 @@ namespace FreeItemFriday.Editor
 
         public void ProcessBundledAsset(AddressableAssetEntry entry, AddressableAssetGroup assetGroup, AddressableAssetsBuildContext aaContext)
         {
-            Type assetType = entry.TargetAsset.GetType();
-            if (assetType == typeof(Shader))
+            Type assetType = AssetDatabase.GetMainAssetTypeAtPath(entry.AssetPath);
+            if (assetType == typeof(GameObject))
             {
+                GameObject gameObject = (GameObject)entry.TargetAsset;
+                foreach (var componentTypeLabel in componentTypeLabels)
+                {
+                    if (gameObject.TryGetComponent((Type)componentTypeLabel.componentType, out _))
+                    {
+                        LabelAsset(entry, componentTypeLabel.label);
+                    }
+                }
                 return;
             }
-            if (AddressablesLabels.assetTypeLabels.TryGetValue(assetType, out string label))
+            foreach (var assetTypeLabel in assetTypeLabels)
             {
-                Debug.Log($"{label}: {entry.AssetPath}");
-                if (entry.ParentEntry != null && entry.labels == entry.ParentEntry.labels)
+                if (((Type)assetTypeLabel.assetType).IsAssignableFrom(assetType))
                 {
-                    labelsField.SetValue(entry, new HashSet<string>(entry.labels));
+                    LabelAsset(entry, assetTypeLabel.label);
+                    continue;
                 }
-                entry.SetLabel(label, true, true, false);
             }
+        }
+
+        private void LabelAsset(AddressableAssetEntry entry, string label)
+        {
+            Debug.Log($"{label}: {entry.AssetPath}");
+            if (entry.ParentEntry != null && entry.labels == entry.ParentEntry.labels)
+            {
+                labelsField.SetValue(entry, new HashSet<string>(entry.labels));
+            }
+            entry.SetLabel(label, true, true, false);
         }
     }
 }

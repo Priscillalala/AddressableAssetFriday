@@ -79,7 +79,10 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
+    - CharacterBody
+    - NetworkedObject
     - ExpansionDef
+    - EntityStateConfiguration
     - ContentPack:FreeItemFriday.BaseContent
     - ItemDef
     - ContentPack:FreeItemFriday.ItemContent.Theremin

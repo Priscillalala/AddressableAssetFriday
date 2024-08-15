@@ -34,14 +34,13 @@ namespace FreeItemFriday.Editor
             if (definition && Addressables)
             {
                 string resolvedArtifactPath = BuildArtifactPath.Resolve(pipeline, this);
-
-                //string resolvedBuildPath = BuildPath.Resolve(pipeline, this);
                 string resolvedLoadPath = definition.RuntimeLoadPath.Resolve(pipeline, this);
                 Addressables.BuildRemoteCatalog = true;
                 Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogBuildPath.GetName(Addressables), resolvedArtifactPath);
                 Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogLoadPath.GetName(Addressables), resolvedLoadPath);
                 Addressables.OverridePlayerVersion = pipeline.Manifest.Identity.Name;
                 Addressables.ActivePlayerDataBuilderIndex = Addressables.DataBuilders.FindIndex(s => s.GetType() == typeof(BuildScriptRoR2));
+                ((BuildScriptRoR2)Addressables.ActivePlayerDataBuilder).SetAssetTypeLabels(definition.assetTypeLabels, definition.componentTypeLabels);
                 void BuildAddressables()
                 {
                     AddressableAssetSettings.BuildPlayerContent(out var result);
