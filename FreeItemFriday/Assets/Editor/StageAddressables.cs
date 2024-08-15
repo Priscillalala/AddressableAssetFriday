@@ -41,7 +41,7 @@ namespace FreeItemFriday.Editor
                 Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogBuildPath.GetName(Addressables), resolvedArtifactPath);
                 Addressables.profileSettings.SetValue(Addressables.activeProfileId, Addressables.RemoteCatalogLoadPath.GetName(Addressables), resolvedLoadPath);
                 Addressables.OverridePlayerVersion = pipeline.Manifest.Identity.Name;
-                Addressables.ActivePlayerDataBuilderIndex = Addressables.DataBuilders.FindIndex(s => s.GetType() == typeof(BuildScriptPackedMode));
+                Addressables.ActivePlayerDataBuilderIndex = Addressables.DataBuilders.FindIndex(s => s.GetType() == typeof(BuildScriptRoR2));
                 void BuildAddressables()
                 {
                     AddressableAssetSettings.BuildPlayerContent(out var result);

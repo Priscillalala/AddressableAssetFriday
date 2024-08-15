@@ -17,7 +17,7 @@ MonoBehaviour:
   m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
-  m_DisableCatalogUpdateOnStart: 0
+  m_DisableCatalogUpdateOnStart: 1
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_NonRecursiveBuilding: 0
@@ -79,10 +79,10 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - ContentPack:FreeItemFriday.BaseContent
-    - ContentPack:FreeItemFriday.ItemContent.Theremin
-    - ItemDef
     - ExpansionDef
+    - ContentPack:FreeItemFriday.BaseContent
+    - ItemDef
+    - ContentPack:FreeItemFriday.ItemContent.Theremin
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: d2098996fd0b9c1448e68bb7a5953111, type: 2}
@@ -90,12 +90,13 @@ MonoBehaviour:
   m_CertificateHandlerType:
     m_AssemblyName: 
     m_ClassName: 
-  m_ActivePlayerDataBuilderIndex: 3
+  m_ActivePlayerDataBuilderIndex: 4
   m_DataBuilders:
   - {fileID: 11400000, guid: 8d2974e8c2d9f4045aea5da44f9ee149, type: 2}
   - {fileID: 11400000, guid: ea94d3ae473a876479a2d511551913a7, type: 2}
   - {fileID: 11400000, guid: 2ba3dde0a2cc373488663b5827e4b314, type: 2}
   - {fileID: 11400000, guid: c72b6fc64ba60364cae051bc52564b04, type: 2}
+  - {fileID: 11400000, guid: 15857ebcc52229b47a263ee33c5ef812, type: 2}
   m_ActiveProfileId: a80c71309acb2bc46b53faa4e59f0ddf
   m_HostingServicesManager:
     m_HostingServiceInfos: []

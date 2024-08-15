@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cd401bd8b66d6e44be6eecbff5b773f, type: 3}
   m_Name: ApplyAssetTypeLabels
   m_EditorClassIdentifier: 
-  Active: 1
+  Active: 0
   RootFolderPaths:
   - Assets/FreeItemFriday
   IncludeShaders: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a1219e2ddf76842ae755895a4c2e6e, type: 3}
   m_Name: ApplyContentPackLabels
   m_EditorClassIdentifier: 
-  Active: 1
+  Active: 0
 --- !u!114 &-2826169011413017941
 MonoBehaviour:
   m_ObjectHideFlags: 0

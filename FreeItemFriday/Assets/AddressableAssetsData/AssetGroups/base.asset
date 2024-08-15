@@ -22,12 +22,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ContentPack:FreeItemFriday.BaseContent
-  - m_GUID: ac60d75f73435b344948fadb51582836
-    m_Address: FreeItemFriday/Base/FreeItemFriday.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ContentPack:FreeItemFriday.BaseContent
-    - ExpansionDef
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   m_SchemaSet:

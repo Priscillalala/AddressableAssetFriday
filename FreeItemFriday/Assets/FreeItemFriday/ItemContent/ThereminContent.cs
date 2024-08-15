@@ -1,6 +1,7 @@
 using RoR2;
 using RoR2.ContentManagement;
 using System.Collections;
+using UnityEngine;
 
 namespace FreeItemFriday.ItemContent
 {
@@ -20,6 +21,13 @@ namespace FreeItemFriday.ItemContent
             contentPack.identifier = identifier;
             AddressablesLoadHelper loadHelper = AddressablesLoadHelper.CreateUsingDefaultResourceLocator("ContentPack:" + identifier);
             loadHelper.AddContentPackLoadOperation(contentPack);
+            loadHelper.AddLoadOperation<Material>(null, assets =>
+            {
+                foreach (var material in assets)
+                {
+                    Debug.Log(material.name);
+                }
+            });
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Items), contentPack.itemDefs);
