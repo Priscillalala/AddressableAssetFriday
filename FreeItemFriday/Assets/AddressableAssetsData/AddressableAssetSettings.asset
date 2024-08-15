@@ -82,7 +82,6 @@ MonoBehaviour:
     - CharacterBody
     - NetworkedObject
     - ExpansionDef
-    - EntityStateConfiguration
     - ContentPack:FreeItemFriday.BaseContent
     - ItemDef
     - ContentPack:FreeItemFriday.ItemContent.Theremin

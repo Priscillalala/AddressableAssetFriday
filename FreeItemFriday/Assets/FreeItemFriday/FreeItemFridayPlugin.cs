@@ -43,6 +43,10 @@ namespace FreeItemFriday
 				add(new FreeItemFridayContent());
 				add(new ItemContent.ThereminContent());
 			};
-		}	
-	}
+			Language.collectLanguageRootFolders += list =>
+			{
+				list.Add(Path.Combine(RuntimeDirectory, "Language"));
+			};
+		}
+    }
 }

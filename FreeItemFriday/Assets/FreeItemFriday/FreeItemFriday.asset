@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7967111027620816876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b243ff405b33b94dbf5b6775dd9aa33, type: 3}
+  m_Name: Files
+  m_EditorClassIdentifier: 
+  StagingPaths:
+  - <BuildPath>
+  includeMetaFiles: 0
+  files:
+  - {fileID: 102900000, guid: 4470421fbbc42b2459bb3df9fe513a13, type: 3}
 --- !u!114 &-6093656968723049575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +68,7 @@ MonoBehaviour:
   - {fileID: -5316771874806157072}
   - {fileID: -6093656968723049575}
   - {fileID: 5041725220934130854}
+  - {fileID: -7967111027620816876}
   identity: {fileID: -5316771874806157072}
   QuickAccess: 1
 --- !u!114 &5041725220934130854
@@ -68,7 +86,6 @@ MonoBehaviour:
   StagingPaths:
   - <BuildPath>/aa
   RuntimeLoadPath: '{FreeItemFriday.FreeItemFridayPlugin.RuntimeDirectory}/aa'
-  matchDerivedAssetTypes: 1
   assetTypeLabels:
   - assetType:
       assemblyQualifiedName: RoR2.Skills.SkillFamily, RoR2, Version=0.0.0.0, Culture=neutral,

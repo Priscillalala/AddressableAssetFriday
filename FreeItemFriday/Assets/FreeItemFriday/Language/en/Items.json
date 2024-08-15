@@ -1,0 +1,7 @@
+{
+	"strings": {
+		"FIF_ITEM_THEREMIN_NAME": "Theremin",
+		"FIF_ITEM_THEREMIN_PICKUP": "Increase attack speed near the Teleporter.",
+		"FIF_ITEM_THEREMIN_DESC": "Increase <style=cIsDamage>attack speed</style> by up to <style=cIsDamage>{0} <style=cStack>(+{1:0%} per stack)</style></style> the closer you are to a Teleporter.",
+	}
+}
