@@ -5,6 +5,8 @@ using RoR2;
 using RoR2.ContentManagement;
 using System.Security;
 using System.Security.Permissions;
+using RiskOfOptions;
+using UnityEngine;
 
 [module: UnverifiableCode]
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -32,12 +34,7 @@ namespace FreeItemFriday
 
 			string catalogPath = Path.Combine(RuntimeDirectory, "aa", $"catalog_{NAME}.json");
 			var locator = Addressables.LoadContentCatalogAsync(catalogPath).WaitForCompletion();
-			foreach (var key in locator.Keys)
-            {
-				Logger.LogInfo(key);
-            }
-			var theremin = Addressables.LoadAssetAsync<ItemDef>("FreeItemFriday/ItemContent/Theremin/Theremin.asset").WaitForCompletion();
-			Logger.LogMessage(theremin.nameToken);
+			
 			ContentManager.collectContentPackProviders += add =>
 			{
 				add(new FreeItemFridayContent());
@@ -48,6 +45,11 @@ namespace FreeItemFriday
 			{
 				list.Add(Path.Combine(RuntimeDirectory, "Language"));
 			};
+			LanguageSystem.Init();
+			Addressables.LoadAssetAsync<Sprite>("FreeItemFriday/Base/texFreeItemFridayExpansionIcon.png").Completed += handle =>
+			{
+				ModSettingsManager.SetModIcon(handle.Result, GUID, NAME);
+			};
 		}
-    }
+	}
 }

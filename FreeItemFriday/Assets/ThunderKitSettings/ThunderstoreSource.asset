@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c3a884997f30143ab7a1ec0a39ba90, type: 3}
-  m_Name: RoR2EditorKitSettings
+  m_Script: {fileID: 11500000, guid: 52934b8837f3f754d97e00ab002548b0, type: 3}
+  m_Name: ThunderstoreSource
   m_EditorClassIdentifier: 
-  tokenPrefix: FIF
-  mainManifest: {fileID: 11400000, guid: 4602ecbd291736c44b14db4d4f720a36, type: 2}
-  madeRoR2EKAssetsNonEditable: 1
+  Url: https://thunderstore.io

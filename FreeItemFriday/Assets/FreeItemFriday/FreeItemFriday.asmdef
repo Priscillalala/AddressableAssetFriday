@@ -17,7 +17,8 @@
         "RoR2BepInExPack.dll",
         "Wwise.dll",
         "UnityEngine.UI.dll",
-        "HGUnityUtils.dll"
+        "HGUnityUtils.dll",
+        "RiskOfOptions.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
