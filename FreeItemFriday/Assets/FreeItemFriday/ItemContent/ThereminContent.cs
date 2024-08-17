@@ -19,8 +19,8 @@ namespace FreeItemFriday.ItemContent
 
         private readonly ContentPack contentPack = new ContentPack();
 
-        public static ConfigEntry<float> attackSpeedBonus;
-        public static ConfigEntry<float> attackSpeedBonusPerStack;
+        public static ConfigEntry<Percent> attackSpeedBonus;
+        public static ConfigEntry<Percent> attackSpeedBonusPerStack;
 
         public string identifier => "FreeItemFriday.ItemContent.Theremin";
 
@@ -49,19 +49,21 @@ namespace FreeItemFriday.ItemContent
         public IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
         {
             ConfigFile config = FreeItemFridayPlugin.Instance.Config;
-            attackSpeedBonus = config.Bind("Theremin", "Attack Speed Bonus", 0.45f);
+            attackSpeedBonus = config.Bind("Theremin", "Attack Speed Bonus", (Percent)0.45f);
             attackSpeedBonus.SettingChanged += (sender, eventArgs) =>
             {
                 Debug.Log($"attack speed bonus changed: {attackSpeedBonus.Value}");
             };
-            attackSpeedBonusPerStack = config.Bind("Theremin", "Attack Speed Bonus Per Stack", 0.35f);
+            attackSpeedBonusPerStack = config.Bind("Theremin", "Attack Speed Bonus Per Stack", (Percent)0.35f);
             attackSpeedBonusPerStack.SettingChanged += (sender, eventArgs) =>
             {
                 Debug.Log($"attack speed bonus PER STACK changed: {attackSpeedBonusPerStack.Value}");
             };
             LanguageSystem.SetArgs(Items.Theremin.descriptionToken, attackSpeedBonus, attackSpeedBonusPerStack);
-            ModSettingsManager.AddOption(new FloatFieldOption(attackSpeedBonus, new FloatFieldConfig { FormatString = "{0:%}" }));
-            ModSettingsManager.AddOption(new FloatFieldOption(attackSpeedBonusPerStack, new FloatFieldConfig { FormatString = "{0:%}" }));
+            var option = new RiskOfOptionsInterop.PercentOption(attackSpeedBonus);
+            ModSettingsManager.AddOption(option);
+            option.dummy = false;
+            //ModSettingsManager.AddOption(new RiskOfOptionsInterop.PercentOption(attackSpeedBonusPerStack));
             //On.RoR2.MusicController.UpdateTeleporterParameters += MusicController_UpdateTeleporterParameters;
             yield break;
         }

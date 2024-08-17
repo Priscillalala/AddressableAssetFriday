@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using EntityStates.Toolbot;
 using UnityEngine.UI;
+using BepInEx.Configuration;
+using RiskOfOptions;
+using RiskOfOptions.Options;
 
 namespace FreeItemFriday.SkillContent
 {
@@ -20,6 +23,8 @@ namespace FreeItemFriday.SkillContent
         }
 
         private readonly ContentPack contentPack = new ContentPack();
+
+        public static ConfigEntry<float> duration;
 
         public string identifier => "FreeItemFriday.SkillContent.Reboot";
 
@@ -110,6 +115,10 @@ namespace FreeItemFriday.SkillContent
 
         public IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
         {
+            ConfigFile config = FreeItemFridayPlugin.Instance.Config;
+            duration = config.Bind("Reboot", "Duration", 0.45f);
+            LanguageSystem.SetArgs(Skills.ToolbotReboot.skillDescriptionToken, duration);
+            ModSettingsManager.AddOption(new FloatFieldOption(duration));
             yield break;
         }
     }
