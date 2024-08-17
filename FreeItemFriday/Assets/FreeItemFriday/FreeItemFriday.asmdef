@@ -18,7 +18,8 @@
         "Wwise.dll",
         "UnityEngine.UI.dll",
         "HGUnityUtils.dll",
-        "RiskOfOptions.dll"
+        "RiskOfOptions.dll",
+        "Unity.TextMeshPro.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

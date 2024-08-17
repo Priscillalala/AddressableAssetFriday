@@ -13,6 +13,8 @@ using RiskOfOptions.OptionConfigs;
 using System.Reflection;
 using RiskOfOptions.Components.Options;
 using RiskOfOptions.Components.RuntimePrefabs;
+using TMPro;
+using RoR2.UI;
 
 namespace FreeItemFriday
 {
@@ -46,7 +48,11 @@ namespace FreeItemFriday
                 prefab = RuntimePrefabManager.Get<FloatFieldPrefab>().FloatField;
                 var floatField = UnityEngine.Object.Instantiate(prefab, parent);
 
-                var settingsField = floatField.GetComponentInChildren<ModSettingsFloatField>();
+                var floatSettingsField = floatField.GetComponentInChildren<ModSettingsFloatField>();
+                var settingsField = floatSettingsField.gameObject.AddComponent<ModSettingsPercent>();
+                settingsField.nameLabel = floatSettingsField.nameLabel;
+                settingsField.valueText = floatSettingsField.valueText;
+                UnityEngine.Object.DestroyImmediate(floatSettingsField);
 
                 settingsField.nameToken = GetNameToken();
                 settingsField.settingToken = Identifier;
@@ -68,9 +74,9 @@ namespace FreeItemFriday
                     {
                         return (Dummy)0;
                     }
-                    return (float)configEntry.Value;
+                    return configEntry.Value;
                 }
-                set => configEntry.Value = (float)value;
+                set => configEntry.BoxedValue = value;
             }
         }
 
@@ -78,6 +84,75 @@ namespace FreeItemFriday
         {
             public override Percent Min { get; set; } = float.MinValue;
             public override Percent Max { get; set; } = float.MaxValue;
+        }
+
+        public class ModSettingsPercent : ModSettingsControl<object>
+        {
+            public TMP_InputField valueText;
+            public Percent min;
+            public Percent max;
+            public string formatString;
+            private NumberFormatInfo numberFormatInfo;
+
+            protected override void Awake()
+            {
+                base.Awake();
+
+                valueText.onEndEdit.AddListener(OnTextEdited);
+                valueText.onSubmit.AddListener(OnTextEdited);
+
+                if (!LanguageSystem.languageNumberFormatting.TryGetValue(Language.currentLanguageName, out numberFormatInfo))
+                {
+                    numberFormatInfo = Separator.GetCultureInfo().NumberFormat;
+                }
+            }
+
+            protected override void Disable()
+            {
+                foreach (var button in GetComponentsInChildren<HGButton>())
+                {
+                    button.interactable = false;
+                }
+            }
+
+            protected override void Enable()
+            {
+                foreach (var button in GetComponentsInChildren<HGButton>())
+                {
+                    button.interactable = true;
+                }
+            }
+
+            protected override void OnUpdateControls()
+            {
+                base.OnUpdateControls();
+
+                Percent currentValue = (Percent)GetCurrentValue();
+                if (currentValue < min)
+                {
+                    currentValue = min;
+                }
+                else if (currentValue > max)
+                {
+                    currentValue = max;
+                }
+                if (valueText)
+                {  
+                    valueText.text = string.Format(Separator.GetCultureInfo(), formatString, currentValue.ToString(numberFormatInfo));
+                }
+            }
+
+            private void OnTextEdited(string newText)
+            {
+                if (float.TryParse(newText, NumberStyles.Any, Separator.GetCultureInfo(), out var num))
+                {
+                    SubmitValue(new Percent(num / 100f));
+                }
+                else
+                {
+                    SubmitValue(GetCurrentValue());
+                }
+            }
         }
     }
 }

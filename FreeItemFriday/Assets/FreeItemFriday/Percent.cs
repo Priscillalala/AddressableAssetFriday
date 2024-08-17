@@ -1,6 +1,4 @@
 using BepInEx.Configuration;
-using RoR2;
-using RoR2.ContentManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -56,6 +54,11 @@ namespace FreeItemFriday
         }
 
         public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return Value.ToString("p", formatProvider);
+        }
+
+        public string ToString(IFormatProvider formatProvider)
         {
             return Value.ToString("p", formatProvider);
         }
