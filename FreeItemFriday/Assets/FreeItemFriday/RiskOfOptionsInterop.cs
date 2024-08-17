@@ -49,7 +49,7 @@ namespace FreeItemFriday
         [MethodImpl(SAFE)]
         public static void AddFloatFieldOption(ConfigEntry<float> configEntry)
         {
-            ModSettingsManager.AddOption(new FloatFieldOption(configEntry));
+            ModSettingsManager.AddOption(new FloatFieldOption(configEntry), FreeItemFridayPlugin.GUID, FreeItemFridayPlugin.NAME);
         }
 
         [MethodImpl(SAFE)]
@@ -59,21 +59,21 @@ namespace FreeItemFriday
             {
                 min = min,
                 max = max
-            }));
+            }), FreeItemFridayPlugin.GUID, FreeItemFridayPlugin.NAME);
         }
 
         [MethodImpl(SAFE)]
         public static void AddPercentOption(ConfigEntry<Percent> configEntry)
         {
             PercentOption percentOption = new PercentOption(configEntry);
-            ModSettingsManager.AddOption(percentOption);
+            ModSettingsManager.AddOption(percentOption, FreeItemFridayPlugin.GUID, FreeItemFridayPlugin.NAME);
             percentOption.dummy = false;
         }
 
         [MethodImpl(SAFE)]
         public static void AddCheckBoxOption(ConfigEntry<bool> configEntry, bool restartRequired = false)
         {
-            ModSettingsManager.AddOption(new CheckBoxOption(configEntry, restartRequired));
+            ModSettingsManager.AddOption(new CheckBoxOption(configEntry, restartRequired), FreeItemFridayPlugin.GUID, FreeItemFridayPlugin.NAME);
         }
 
         class PercentOption : ChoiceOption
