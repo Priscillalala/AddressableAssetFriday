@@ -1,7 +1,4 @@
 using BepInEx.Configuration;
-using RiskOfOptions;
-using RiskOfOptions.Options;
-using RiskOfOptions.OptionConfigs;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Items;
@@ -49,20 +46,10 @@ namespace FreeItemFriday.ItemContent
         public IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
         {
             ConfigFile config = FreeItemFridayPlugin.Instance.Config;
-            attackSpeedBonus = config.Bind("Theremin", "Attack Speed Bonus", (Percent)0.45f);
-            attackSpeedBonus.SettingChanged += (sender, eventArgs) =>
-            {
-                Debug.Log($"attack speed bonus changed: {attackSpeedBonus.Value}");
-            };
-            attackSpeedBonusPerStack = config.Bind("Theremin", "Attack Speed Bonus Per Stack", (Percent)0.35f);
-            attackSpeedBonusPerStack.SettingChanged += (sender, eventArgs) =>
-            {
-                Debug.Log($"attack speed bonus PER STACK changed: {attackSpeedBonusPerStack.Value}");
-            };
+            attackSpeedBonus = config.BindWithOptions("Theremin", "Attack Speed Bonus", (Percent)0.45f);
+            attackSpeedBonusPerStack = config.BindWithOptions("Theremin", "Attack Speed Bonus Per Stack", (Percent)0.35f);
             LanguageSystem.SetArgs(Items.Theremin.descriptionToken, attackSpeedBonus, attackSpeedBonusPerStack);
-            var option = new RiskOfOptionsInterop.PercentOption(attackSpeedBonus);
-            ModSettingsManager.AddOption(option);
-            option.dummy = false;
+
             //ModSettingsManager.AddOption(new RiskOfOptionsInterop.PercentOption(attackSpeedBonusPerStack));
             //On.RoR2.MusicController.UpdateTeleporterParameters += MusicController_UpdateTeleporterParameters;
             yield break;

@@ -15,12 +15,68 @@ using RiskOfOptions.Components.Options;
 using RiskOfOptions.Components.RuntimePrefabs;
 using TMPro;
 using RoR2.UI;
+using BepInEx.Bootstrap;
+using UnityEngine.AddressableAssets;
+using System.Runtime.CompilerServices;
 
 namespace FreeItemFriday
 {
 	public static class RiskOfOptionsInterop
     {
-        public class PercentOption : ChoiceOption
+        const MethodImplOptions SAFE = MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization;
+
+        public static bool Available { get; private set; }
+
+        public static void Init()
+        {
+            Available = Chainloader.PluginInfos.ContainsKey(PluginInfo.PLUGIN_GUID);
+            if (Available)
+            {
+                FreeItemFridayPlugin.Logger.LogMessage("Found Risk of Options!");
+                SetModIcon();
+            }
+        }
+
+        [MethodImpl(SAFE)]
+        public static void SetModIcon()
+        {
+            Addressables.LoadAssetAsync<Sprite>("FreeItemFriday/Base/texFreeItemFridayExpansionIcon.png").Completed += handle =>
+            {
+                ModSettingsManager.SetModIcon(handle.Result);
+            };
+        }
+
+        [MethodImpl(SAFE)]
+        public static void AddFloatFieldOption(ConfigEntry<float> configEntry)
+        {
+            ModSettingsManager.AddOption(new FloatFieldOption(configEntry));
+        }
+
+        [MethodImpl(SAFE)]
+        public static void AddFloatSliderOption(ConfigEntry<float> configEntry, float min, float max)
+        {
+            ModSettingsManager.AddOption(new SliderOption(configEntry, new SliderConfig 
+            {
+                min = min,
+                max = max
+            }));
+        }
+
+        [MethodImpl(SAFE)]
+        public static void AddPercentOption(ConfigEntry<Percent> configEntry)
+        {
+            PercentOption percentOption = new PercentOption(configEntry);
+            ModSettingsManager.AddOption(percentOption);
+            percentOption.dummy = false;
+        }
+
+        [MethodImpl(SAFE)]
+        public static void AddCheckBoxOption(ConfigEntry<bool> configEntry, bool restartRequired = false)
+        {
+            ModSettingsManager.AddOption(new CheckBoxOption(configEntry, restartRequired));
+        }
+
+        class PercentOption : ChoiceOption
         {
             public enum Dummy { }
 
@@ -80,13 +136,13 @@ namespace FreeItemFriday
             }
         }
 
-        public class PercentConfig : NumericFieldConfig<Percent>
+        class PercentConfig : NumericFieldConfig<Percent>
         {
             public override Percent Min { get; set; } = float.MinValue;
             public override Percent Max { get; set; } = float.MaxValue;
         }
 
-        public class ModSettingsPercent : ModSettingsControl<object>
+        class ModSettingsPercent : ModSettingsControl<object>
         {
             public TMP_InputField valueText;
             public Percent min;

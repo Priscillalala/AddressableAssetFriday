@@ -5,8 +5,8 @@ using RoR2;
 using RoR2.ContentManagement;
 using System.Security;
 using System.Security.Permissions;
-using RiskOfOptions;
 using UnityEngine;
+using BepInEx.Logging;
 
 [module: UnverifiableCode]
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -17,6 +17,7 @@ using UnityEngine;
 namespace FreeItemFriday
 {
 	[BepInPlugin(GUID, NAME, VERSION)]
+	[BepInDependency(RiskOfOptions.PluginInfo.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
 	public class FreeItemFridayPlugin : BaseUnityPlugin
 	{
 		public const string 
@@ -26,11 +27,13 @@ namespace FreeItemFriday
 
 		public static FreeItemFridayPlugin Instance { get; private set; }
 		public static string RuntimeDirectory { get; private set; }
+		public static new ManualLogSource Logger { get; private set; }
 
 		private void Awake()
 		{
 			Instance = this;
 			RuntimeDirectory = Path.GetDirectoryName(Info.Location);
+			Logger = base.Logger;
 
 			string catalogPath = Path.Combine(RuntimeDirectory, "aa", $"catalog_{NAME}.json");
 			var locator = Addressables.LoadContentCatalogAsync(catalogPath).WaitForCompletion();
@@ -46,10 +49,7 @@ namespace FreeItemFriday
 				list.Add(Path.Combine(RuntimeDirectory, "Language"));
 			};
 			LanguageSystem.Init();
-			Addressables.LoadAssetAsync<Sprite>("FreeItemFriday/Base/texFreeItemFridayExpansionIcon.png").Completed += handle =>
-			{
-				ModSettingsManager.SetModIcon(handle.Result, GUID, NAME);
-			};
+			RiskOfOptionsInterop.Init();
 		}
 	}
 }
