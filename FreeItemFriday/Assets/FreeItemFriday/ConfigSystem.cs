@@ -12,7 +12,7 @@ namespace FreeItemFriday
 {
 	public static class ConfigSystem
     {
-        public static ConfigEntry<float> BindWithOptions(this ConfigFile config, string section, string key, float defaultValue, string description = null, AcceptableValueBase acceptableValues = null)
+        public static ConfigEntry<float> Option(this ConfigFile config, string section, string key, float defaultValue, string description = null, AcceptableValueBase acceptableValues = null)
         {
             ConfigDescription configDescription = null;
             if (!string.IsNullOrEmpty(description) || acceptableValues != null)
@@ -34,7 +34,22 @@ namespace FreeItemFriday
             return configEntry;
         }
 
-        public static ConfigEntry<Percent> BindWithOptions(this ConfigFile config, string section, string key, Percent defaultValue, string description = null)
+        public static ConfigEntry<float> Option(this ConfigFile config, string section, string key, EntityStateConfiguration entityStateConfiguration, string fieldName, string description = null, AcceptableValueBase acceptableValues = null)
+        {
+            var configEntry = config.Option(section, key, entityStateConfiguration.GetValue<float>(fieldName), description, acceptableValues);
+            if (configEntry.Value != (float)configEntry.DefaultValue)
+            {
+                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
+            }
+            configEntry.SettingChanged += (sender, args) =>
+            {
+                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
+                EntityStateCatalog.ApplyEntityStateConfiguration(entityStateConfiguration);
+            };
+            return configEntry;
+        }
+
+        public static ConfigEntry<Percent> Option(this ConfigFile config, string section, string key, Percent defaultValue, string description = null)
         {
             var configEntry = config.Bind(section, key, defaultValue, !string.IsNullOrEmpty(description) ? new ConfigDescription(description) : null);
             if (RiskOfOptionsInterop.Available)
@@ -44,7 +59,7 @@ namespace FreeItemFriday
             return configEntry;
         }
 
-        public static ConfigEntry<bool> BindWithOptions(this ConfigFile config, string section, string key, bool defaultValue, string description = null)
+        public static ConfigEntry<bool> Option(this ConfigFile config, string section, string key, bool defaultValue, string description = null)
         {
             var configEntry = config.Bind(section, key, defaultValue, !string.IsNullOrEmpty(description) ? new ConfigDescription(description) : null);
             if (RiskOfOptionsInterop.Available)

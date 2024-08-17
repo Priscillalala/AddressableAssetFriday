@@ -19,7 +19,8 @@
         "UnityEngine.UI.dll",
         "HGUnityUtils.dll",
         "RiskOfOptions.dll",
-        "Unity.TextMeshPro.dll"
+        "Unity.TextMeshPro.dll",
+        "R2API.RecalculateStats.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

@@ -1,4 +1,5 @@
-﻿using HG;
+﻿using System;
+using HG;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Skills;
@@ -13,20 +14,27 @@ using BepInEx.Configuration;
 
 namespace FreeItemFriday.SkillContent
 {
-    public class RebootContent : IContentPackProvider
+    [AddContentPackProvider(ContentGroup.SKILLS, NAME)]
+    public class RebootContent : BaseContentPackProvider
     {
+        const string NAME = "Reboot";
+
         public static class Skills
         {
             public static SkillDef ToolbotReboot;
         }
 
-        private readonly ContentPack contentPack = new ContentPack();
+        public static class EntityStates
+        {
+            [TargetTypeName(typeof(Reboot))]
+            public static EntityStateConfiguration Reboot;
+        }
 
         public static ConfigEntry<float> duration;
 
-        public string identifier => "FreeItemFriday.SkillContent.Reboot";
+        public override string identifier => "FreeItemFriday.SkillContent.Reboot";
 
-        public IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
+        public override IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
         {
             contentPack.identifier = identifier;
             AddressablesLoadHelper loadHelper = AddressablesLoadHelper.CreateUsingDefaultResourceLocator("ContentPack:" + identifier);
@@ -34,6 +42,12 @@ namespace FreeItemFriday.SkillContent
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Skills), contentPack.skillDefs);
+                ContentLoadHelper.PopulateTypeFields(typeof(EntityStates), contentPack.entityStateConfigurations);
+            }, 0.05f);
+            loadHelper.AddGenericOperation(delegate
+            {
+                var duration = config.Option(NAME, "Duration", EntityStates.Reboot, nameof(Reboot.baseDuration));
+                LanguageSystem.SetArgs(Skills.ToolbotReboot.skillDescriptionToken, duration);
             }, 0.05f);
             loadHelper.AddGenericOperation(AddSkill);
             loadHelper.AddGenericOperation(CreateLegacyPrefabs);
@@ -100,22 +114,18 @@ namespace FreeItemFriday.SkillContent
             contentPack.effectDefs.Add(new[] { new EffectDef(VentEffect) });
             //Reboot.cleanseBodyEffectPrefab = VentEffect;
 
-            EntityStateConfiguration rebootConfiguration = contentPack.entityStateConfigurations.Find(typeof(Reboot).FullName);
-            rebootConfiguration.serializedFieldsCollection.GetOrCreateField(nameof(Reboot.hudOverlayPrefab)).fieldValue.objectValue = RebootOverlay;
-            rebootConfiguration.serializedFieldsCollection.GetOrCreateField(nameof(Reboot.cleanseBodyEffectPrefab)).fieldValue.objectValue = VentEffect;
+            EntityStates.Reboot.SetValue(nameof(Reboot.hudOverlayPrefab), RebootOverlay);
+            EntityStates.Reboot.SetValue(nameof(Reboot.cleanseBodyEffectPrefab), VentEffect);
         }
 
-        public IEnumerator GenerateContentPackAsync(GetContentPackAsyncArgs args)
+        public override IEnumerator GenerateContentPackAsync(GetContentPackAsyncArgs args)
         {
             ContentPack.Copy(contentPack, args.output);
             yield break;
         }
 
-        public IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
+        public override IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
         {
-            ConfigFile config = FreeItemFridayPlugin.Instance.Config;
-            duration = config.BindWithOptions("Reboot", "Duration", 3f);
-            LanguageSystem.SetArgs(Skills.ToolbotReboot.skillDescriptionToken, duration);
             yield break;
         }
     }

@@ -1,4 +1,5 @@
 using BepInEx.Configuration;
+using R2API;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Items;
@@ -7,28 +8,34 @@ using UnityEngine;
 
 namespace FreeItemFriday.ItemContent
 {
-	public class ThereminContent : IContentPackProvider
+    [AddContentPackProvider(ContentGroup.ITEMS, NAME)]
+	public class ThereminContent : BaseContentPackProvider
 	{
+        const string NAME = "Theremin";
+
         public static class Items
         {
             public static ItemDef Theremin;
         }
 
-        private readonly ContentPack contentPack = new ContentPack();
-
         public static ConfigEntry<Percent> attackSpeedBonus;
         public static ConfigEntry<Percent> attackSpeedBonusPerStack;
 
-        public string identifier => "FreeItemFriday.ItemContent.Theremin";
+        public override string identifier => $"FreeItemFriday.ItemContent.Theremin";
 
-        public IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
+        public override IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
         {
-            contentPack.identifier = identifier;
-            AddressablesLoadHelper loadHelper = AddressablesLoadHelper.CreateUsingDefaultResourceLocator("ContentPack:" + identifier);
+            AddressablesLoadHelper loadHelper = CreateLoadHelper();
             loadHelper.AddContentPackLoadOperation(contentPack);
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Items), contentPack.itemDefs);
+            }, 0.05f);
+            loadHelper.AddGenericOperation(delegate
+            {
+                attackSpeedBonus = config.Option(NAME, "Attack Speed Bonus", (Percent)0.45f);
+                attackSpeedBonusPerStack = config.Option(NAME, "Attack Speed Bonus Per Stack", (Percent)0.35f);
+                LanguageSystem.SetArgs(Items.Theremin.descriptionToken, attackSpeedBonus, attackSpeedBonusPerStack);
             }, 0.05f);
             while (loadHelper.coroutine.MoveNext())
             {
@@ -37,25 +44,19 @@ namespace FreeItemFriday.ItemContent
             }
         }
 
-        public IEnumerator GenerateContentPackAsync(GetContentPackAsyncArgs args)
+        public override IEnumerator GenerateContentPackAsync(GetContentPackAsyncArgs args)
         {
             ContentPack.Copy(contentPack, args.output);
             yield break;
         }
 
-        public IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
+        public override IEnumerator FinalizeAsync(FinalizeAsyncArgs args)
         {
-            ConfigFile config = FreeItemFridayPlugin.Instance.Config;
-            attackSpeedBonus = config.BindWithOptions("Theremin", "Attack Speed Bonus", (Percent)0.45f);
-            attackSpeedBonusPerStack = config.BindWithOptions("Theremin", "Attack Speed Bonus Per Stack", (Percent)0.35f);
-            LanguageSystem.SetArgs(Items.Theremin.descriptionToken, attackSpeedBonus, attackSpeedBonusPerStack);
-
-            //ModSettingsManager.AddOption(new RiskOfOptionsInterop.PercentOption(attackSpeedBonusPerStack));
-            //On.RoR2.MusicController.UpdateTeleporterParameters += MusicController_UpdateTeleporterParameters;
+            On.RoR2.MusicController.UpdateTeleporterParameters += MusicController_UpdateTeleporterParameters;
             yield break;
         }
 
-        /*private static void MusicController_UpdateTeleporterParameters(On.RoR2.MusicController.orig_UpdateTeleporterParameters orig, MusicController self, TeleporterInteraction teleporter, Transform cameraTransform, CharacterBody targetBody)
+        private static void MusicController_UpdateTeleporterParameters(On.RoR2.MusicController.orig_UpdateTeleporterParameters orig, MusicController self, TeleporterInteraction teleporter, Transform cameraTransform, CharacterBody targetBody)
         {
             orig(self, teleporter, cameraTransform, targetBody);
             self.rtpcTeleporterProximityValue.value = Util.Remap(self.rtpcTeleporterProximityValue.value, 0f, 10000f, 5000f, 10000f);
@@ -82,7 +83,7 @@ namespace FreeItemFriday.ItemContent
                 {
                     Vector3 distance = body.corePosition - position;
                     currentBonusCoefficient = 1000f / (1000f + distance.sqrMagnitude);
-                    currentBonus = currentBonusCoefficient * Ivyl.StackScaling(attackSpeedBonus, attackSpeedBonusPerStack, stack);
+                    currentBonus = currentBonusCoefficient * (attackSpeedBonus.Value + attackSpeedBonusPerStack.Value * (stack - 1));
                 }
                 else
                 {
@@ -114,6 +115,6 @@ namespace FreeItemFriday.ItemContent
                     args.attackSpeedMultAdd += currentBonus;
                 }
             }
-        }*/
+        }
     }
 }
