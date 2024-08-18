@@ -160,10 +160,6 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     label: EntitlementDef
   - assetType:
-      assemblyQualifiedName: UnityEngine.Shader, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    label: Shader
-  - assetType:
       assemblyQualifiedName: RoR2.ItemRelationshipProvider, RoR2, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     label: ItemRelationshipProvider
@@ -179,6 +175,10 @@ MonoBehaviour:
       assemblyQualifiedName: FreeItemFriday.KeyAssetRuleSet, FreeItemFriday, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     label: KeyAssetRuleSet
+  - assetType:
+      assemblyQualifiedName: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: Material
   componentTypeLabels:
   - componentType:
       assemblyQualifiedName: RoR2.CharacterBody, RoR2, Version=0.0.0.0, Culture=neutral,

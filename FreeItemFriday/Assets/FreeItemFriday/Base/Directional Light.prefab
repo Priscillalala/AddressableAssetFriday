@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -878537971145137532}
   - component: {fileID: -5441378918955036596}
   - component: {fileID: -3710047439646860472}
+  - component: {fileID: 1432104583586539834}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -233,3 +234,15 @@ MonoBehaviour:
   skinIndex: 0
   customKillTotalStatName: 
   overrideCoreTransform: {fileID: 0}
+--- !u!114 &1432104583586539834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8674060581928613099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1144835783, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

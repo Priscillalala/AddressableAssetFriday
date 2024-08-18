@@ -85,6 +85,7 @@ MonoBehaviour:
     - ExpansionDef
     - ContentPack:FreeItemFriday.BaseContent
     - KeyAssetRuleSet
+    - Material
     - ItemDef
     - ContentPack:FreeItemFriday.ItemContent.Theremin
     - EntityStateConfiguration

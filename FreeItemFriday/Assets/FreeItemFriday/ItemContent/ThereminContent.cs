@@ -21,13 +21,14 @@ namespace FreeItemFriday.ItemContent
         public static ConfigEntry<Percent> attackSpeedBonus;
         public static ConfigEntry<Percent> attackSpeedBonusPerStack;
 
-        public override string identifier => $"FreeItemFriday.ItemContent.Theremin";
+        public override string identifier => "FreeItemFriday.ItemContent.Theremin";
 
         public override IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
         {
             AddressablesLoadHelper loadHelper = CreateLoadHelper();
             loadHelper.AddContentPackLoadOperation(contentPack);
             loadHelper.AddLoadOperation<KeyAssetRuleSet>(KeyAssetRuleSet.LABEL, KeyAssetRuleSet.allAssets.AddRange);
+            loadHelper.AddUpgradeStubbedShadersOperation();
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Items), contentPack.itemDefs);
