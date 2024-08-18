@@ -20,7 +20,6 @@ namespace FreeItemFriday.Editor.ItemDisplays
                 position.y += position.height + EditorGUIUtility.standardVerticalSpacing;
             }
 
-            //if (EditorGUI.PropertyField(position, property, label, false))
             if (property.isExpanded = EditorGUI.Foldout(position, property.isExpanded, "Item Display Rule", true))
             {
                 EditorGUI.indentLevel++;
@@ -68,29 +67,9 @@ namespace FreeItemFriday.Editor.ItemDisplays
                     ruleType.enumValueIndex = newRuleType;
                     property.serializedObject.ApplyModifiedProperties();
                 }
-                //NextLine();
-                //EditorGUI.PropertyField(position, ruleType);
-                /*if ((ItemDisplayRuleType)ruleType.enumValueIndex == ItemDisplayRuleType.LimbMask)
-                {
-                    NextLine();
-                    Rect limbMaskPos = position;
-                    limbMaskPos.width /= 2f;
-                    EditorGUI.PropertyField(limbMaskPos, ruleType);
-                    limbMaskPos.x += limbMaskPos.width;
-                    EditorGUI.PropertyField(limbMaskPos, , GUIContent.none);
-                }
-                else
-                {
-                    NextLine();
-                    EditorGUI.PropertyField(position, ruleType);
-                }*/
 
-                string content = string.IsNullOrEmpty(childName.stringValue) ? "Transform" : childName.stringValue;
                 NextLine();
-                //Rect transformPos = position;
-                //transformPos.width = Mathf.Min(transformPos.width / 2f, 50f);
-                //transformPos.width /= 2f;
-                //transformPos.x += transformPos.width;
+                string content = string.IsNullOrEmpty(childName.stringValue) ? "Transform" : childName.stringValue;
                 if (childName.isExpanded = EditorGUI.Foldout(position, childName.isExpanded, content, true))
                 {
                     EditorGUI.indentLevel++;

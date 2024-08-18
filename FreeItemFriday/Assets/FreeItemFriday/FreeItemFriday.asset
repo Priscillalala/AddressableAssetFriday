@@ -175,6 +175,10 @@ MonoBehaviour:
       assemblyQualifiedName: RoR2.MiscPickupDef, RoR2, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     label: MiscPickupDef
+  - assetType:
+      assemblyQualifiedName: FreeItemFriday.KeyAssetRuleSet, FreeItemFriday, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: KeyAssetRuleSet
   componentTypeLabels:
   - componentType:
       assemblyQualifiedName: RoR2.CharacterBody, RoR2, Version=0.0.0.0, Culture=neutral,

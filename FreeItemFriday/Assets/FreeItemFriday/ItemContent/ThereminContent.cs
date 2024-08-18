@@ -27,6 +27,7 @@ namespace FreeItemFriday.ItemContent
         {
             AddressablesLoadHelper loadHelper = CreateLoadHelper();
             loadHelper.AddContentPackLoadOperation(contentPack);
+            loadHelper.AddLoadOperation<KeyAssetRuleSet>(KeyAssetRuleSet.LABEL, KeyAssetRuleSet.allAssets.AddRange);
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Items), contentPack.itemDefs);

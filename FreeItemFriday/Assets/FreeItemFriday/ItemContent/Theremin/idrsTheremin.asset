@@ -12,4 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb6b078ebde3954189c60fddd6618b2, type: 3}
   m_Name: idrsTheremin
   m_EditorClassIdentifier: 
-  keyAsset: {fileID: 0}
+  keyAsset: {fileID: 11400000, guid: e4834efc47fb93c47995fbddb9de7782, type: 2}
+  itemDisplayRuleGroups:
+  - targetRuleSetName: idrsCommando
+    rules:
+    - ruleType: 0
+      followerPrefab: {fileID: 1073277640976277668, guid: 665866f61e0e9ba4d8b2aeddbb53451c,
+        type: 3}
+      childName: Stomach
+      localPos: {x: 0.13491, y: -0.05978, z: -0.126}
+      localAngles: {x: 285.9316, y: 354.6909, z: 343.4794}
+      localScale: {x: 1.05089, y: 1.06357, z: 1.05089}
+      limbMask: 0
+  - targetRuleSetName: idrsHuntress
+    rules:
+    - ruleType: 0
+      followerPrefab: {fileID: 1073277640976277668, guid: 665866f61e0e9ba4d8b2aeddbb53451c,
+        type: 3}
+      childName: Pelvis
+      localPos: {x: 0.14773, y: 0.04592, z: 0.14647}
+      localAngles: {x: 55.92511, y: 189.9159, z: 157.5366}
+      localScale: {x: 1.06336, y: 1.06336, z: 1.06336}
+      limbMask: 0
+  - targetRuleSetName: idrsBandit2
+    rules:
+    - ruleType: 0
+      followerPrefab: {fileID: 1073277640976277668, guid: 665866f61e0e9ba4d8b2aeddbb53451c,
+        type: 3}
+      childName: Stomach
+      localPos: {x: 0.03759, y: -0.13868, z: -0.20006}
+      localAngles: {x: 293.316, y: 358.5328, z: 352.6877}
+      localScale: {x: 1.16451, y: 1.16451, z: 1.16451}
+      limbMask: 0

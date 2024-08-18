@@ -3,6 +3,8 @@ using RoR2.ContentManagement;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using HG;
+using System.Linq;
 
 namespace FreeItemFriday
 {
@@ -14,6 +16,34 @@ namespace FreeItemFriday
         {
             public string targetRuleSetName;
             public ItemDisplayRule[] rules;
+        }
+
+        public const string LABEL = "KeyAssetRuleSet";
+
+        public static readonly List<KeyAssetRuleSet> allAssets = new List<KeyAssetRuleSet>();
+
+        static KeyAssetRuleSet()
+        {
+            ContentManager.onContentPacksAssigned += ContentManager_onContentPacksAssigned;
+        }
+
+        private static void ContentManager_onContentPacksAssigned(ReadOnlyArray<ReadOnlyContentPack> contentPacks)
+        {
+            Dictionary<string, ItemDisplayRuleSet> itemDisplayRuleSets = ItemDisplayRuleSet.instancesList.ToDictionary(x => x.name);
+            foreach (KeyAssetRuleSet keyAssetRuleSet in allAssets)
+            {
+                foreach (ItemDisplayRuleGroup group in keyAssetRuleSet.itemDisplayRuleGroups)
+                {
+                    if (itemDisplayRuleSets.TryGetValue(group.targetRuleSetName, out ItemDisplayRuleSet idrs))
+                    {
+                        ArrayUtils.ArrayAppend(ref idrs.keyAssetRuleGroups, new ItemDisplayRuleSet.KeyAssetRuleGroup
+                        {
+                            keyAsset = keyAssetRuleSet.keyAsset,
+                            displayRuleGroup = { rules = group.rules }
+                        });
+                    }
+                }
+            }
         }
 
         public UnityEngine.Object keyAsset;

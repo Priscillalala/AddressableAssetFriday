@@ -84,6 +84,7 @@ MonoBehaviour:
     - NetworkedObject
     - ExpansionDef
     - ContentPack:FreeItemFriday.BaseContent
+    - KeyAssetRuleSet
     - ItemDef
     - ContentPack:FreeItemFriday.ItemContent.Theremin
     - EntityStateConfiguration
