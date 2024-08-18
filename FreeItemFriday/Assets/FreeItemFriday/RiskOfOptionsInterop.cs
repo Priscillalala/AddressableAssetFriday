@@ -63,6 +63,22 @@ namespace FreeItemFriday
         }
 
         [MethodImpl(SAFE)]
+        public static void AddIntFieldOption(ConfigEntry<int> configEntry)
+        {
+            ModSettingsManager.AddOption(new IntFieldOption(configEntry), FreeItemFridayPlugin.GUID, FreeItemFridayPlugin.NAME);
+        }
+
+        [MethodImpl(SAFE)]
+        public static void AddIntSliderOption(ConfigEntry<int> configEntry, int min, int max)
+        {
+            ModSettingsManager.AddOption(new IntSliderOption(configEntry, new IntSliderConfig
+            {
+                min = min,
+                max = max
+            }), FreeItemFridayPlugin.GUID, FreeItemFridayPlugin.NAME);
+        }
+
+        [MethodImpl(SAFE)]
         public static void AddPercentOption(ConfigEntry<Percent> configEntry)
         {
             PercentOption percentOption = new PercentOption(configEntry);

@@ -49,6 +49,45 @@ namespace FreeItemFriday
             return configEntry;
         }
 
+        public static ConfigEntry<int> Option(this ConfigFile config, string section, string key, int defaultValue, string description = null, AcceptableValueBase acceptableValues = null)
+        {
+            ConfigDescription configDescription = null;
+            if (!string.IsNullOrEmpty(description) || acceptableValues != null)
+            {
+                configDescription = new ConfigDescription(description ?? string.Empty, acceptableValues);
+            }
+            var configEntry = config.Bind(section, key, defaultValue, configDescription);
+            if (RiskOfOptionsInterop.Available)
+            {
+                if (acceptableValues is AcceptableValueRange<int> acceptableValuesRange)
+                {
+                    RiskOfOptionsInterop.AddIntSliderOption(configEntry, acceptableValuesRange.MinValue, acceptableValuesRange.MaxValue);
+                }
+                else
+                {
+                    RiskOfOptionsInterop.AddIntFieldOption(configEntry);
+                }
+            }
+            return configEntry;
+        }
+
+        /*public static ConfigEntryBase Option(this ConfigFile config, string section, string key, EntityStateConfiguration entityStateConfiguration, string fieldName, string description = null, AcceptableValueBase acceptableValues = null)
+        {
+            
+            
+            var configEntry = config.Option(section, key, entityStateConfiguration.GetValue<T>(fieldName), description, acceptableValues);
+            if (configEntry.Value != (T)configEntry.DefaultValue)
+            {
+                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
+            }
+            configEntry.SettingChanged += (sender, args) =>
+            {
+                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
+                EntityStateCatalog.ApplyEntityStateConfiguration(entityStateConfiguration);
+            };
+            return configEntry;
+        }*/
+
         public static ConfigEntry<Percent> Option(this ConfigFile config, string section, string key, Percent defaultValue, string description = null)
         {
             var configEntry = config.Bind(section, key, defaultValue, !string.IsNullOrEmpty(description) ? new ConfigDescription(description) : null);

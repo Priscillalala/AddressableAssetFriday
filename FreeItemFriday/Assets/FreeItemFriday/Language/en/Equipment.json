@@ -1,0 +1,10 @@
+{
+	"strings": {
+		"FREE_EQUIP_DEATHEYE_NAME": "Godless Eye",
+		"FREE_EQUIP_DEATHEYE_PICKUP": "Obliterate all nearby enemies from existence, then yourself. Consumed on use.",
+		"FREE_EQUIP_DEATHEYE_DESC": "Obliterate enemies within <style=cIsUtility>{0}m</style> from existence. Then, <style=cIsHealth>obliterate yourself from existence</style>. Equipment is <style=cIsUtility>consumed</style> on use.",
+		"FREE_EQUIP_DEATHEYECONSUMED_NAME": "Godless Eye (Consumed)",
+		"FREE_EQUIP_DEATHEYECONSUMED_PICKUP": "Still shocking to the touch. Does nothing.",
+		"FREE_EQUIP_DEATHEYECONSUMED_DESC": "Still shocking to the touch. Does nothing."
+	}
+}

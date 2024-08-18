@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: godlesseye
+  m_EditorClassIdentifier: 
+  m_GroupName: godlesseye
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 91d7fbd205e508640bd7d39a7e414be5
+  m_SerializeEntries:
+  - m_GUID: a584f5e7d4a7f6c4e85d62d82d2057b9
+    m_Address: FreeItemFriday/EquipmentContent/GodlessEye
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5f18f4f49b7d8dc42a580a5d5ad742bb, type: 2}
+    - {fileID: 11400000, guid: caa17bdc516bcc742a5521790d26ca30, type: 2}

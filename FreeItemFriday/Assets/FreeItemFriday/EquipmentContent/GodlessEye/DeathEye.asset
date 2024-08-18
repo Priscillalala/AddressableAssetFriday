@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28156d02ee263c747b29e698354d44b5, type: 3}
+  m_Name: DeathEye
+  m_EditorClassIdentifier: 
+  pickupModelPrefab: {fileID: 7462177136800530206, guid: fca96c552a975e4448e16771cc3ccd5c,
+    type: 3}
+  cooldown: 60
+  nameToken: FREE_EQUIP_DEATHEYE_NAME
+  pickupToken: FREE_EQUIP_DEATHEYE_PICKUP
+  descriptionToken: FREE_EQUIP_DEATHEYE_DESC
+  loreToken: FREE_EQUIP_DEATHEYE_LORE
+  pickupIconSprite: {fileID: 21300000, guid: d7c049b837955674eb5042677edea98c, type: 3}
+  unlockableDef: {fileID: 0}
+  colorIndex: 0
+  canDrop: 1
+  dropOnDeathChance: 1
+  canBeRandomlyTriggered: 0
+  enigmaCompatible: 0
+  isLunar: 1
+  isBoss: 0
+  passiveBuffDef: {fileID: 0}
+  appearsInSinglePlayer: 0
+  appearsInMultiPlayer: 1
+  requiredExpansion: {fileID: 11400000, guid: ac60d75f73435b344948fadb51582836, type: 2}
+  mageElement: 0
+  fireMethod:
+    targetType:
+      assemblyQualifiedName: FreeItemFriday.EquipmentContent.GodlessEyeContent, FreeItemFriday,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    targetMethodName: FireDeathEye

@@ -100,7 +100,6 @@ namespace FreeItemFriday.SkillContent
             fillbarImage.color = Color.white;
             UnityEngine.Object.DestroyImmediate(barContainer.transform.Find("SoftGlow").gameObject);
             UnityEngine.Object.DestroyImmediate(barContainer.transform.Find("Inner/SpinnySquare").gameObject);
-            //Reboot.hudOverlayPrefab = RebootOverlay;
 
             GameObject VentEffect = Prefab.Clone(Chest1Starburst.Result, "ToolbotVentEffect");
             UnityEngine.Object.DestroyImmediate(VentEffect.transform.Find("Dust").gameObject);
@@ -112,7 +111,6 @@ namespace FreeItemFriday.SkillContent
             vFXAttributes.vfxIntensity = VFXAttributes.VFXIntensity.Low;
             vFXAttributes.vfxPriority = VFXAttributes.VFXPriority.Medium;
             contentPack.effectDefs.Add(new[] { new EffectDef(VentEffect) });
-            //Reboot.cleanseBodyEffectPrefab = VentEffect;
 
             EntityStates.Reboot.SetValue(nameof(Reboot.hudOverlayPrefab), RebootOverlay);
             EntityStates.Reboot.SetValue(nameof(Reboot.cleanseBodyEffectPrefab), VentEffect);

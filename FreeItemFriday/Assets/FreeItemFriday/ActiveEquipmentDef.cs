@@ -54,10 +54,5 @@ namespace FreeItemFriday
         }
 
         public TargetMethod fireMethod;
-
-        public ActiveEquipmentDef() : base()
-        {
-            canDrop = true;
-        }
     }
 }
