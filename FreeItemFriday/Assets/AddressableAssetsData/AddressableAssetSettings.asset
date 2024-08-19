@@ -92,6 +92,9 @@ MonoBehaviour:
     - EntityStateConfiguration
     - SkillDef
     - ContentPack:FreeItemFriday.SkillContent.Reboot
+    - EquipmentDef
+    - UnlockableDef
+    - ContentPack:FreeItemFriday.EquipmentContent.GodlessEye
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: d2098996fd0b9c1448e68bb7a5953111, type: 2}

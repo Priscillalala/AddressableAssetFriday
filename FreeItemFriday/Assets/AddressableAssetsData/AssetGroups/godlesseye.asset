@@ -20,7 +20,8 @@ MonoBehaviour:
   - m_GUID: a584f5e7d4a7f6c4e85d62d82d2057b9
     m_Address: FreeItemFriday/EquipmentContent/GodlessEye
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - ContentPack:FreeItemFriday.EquipmentContent.GodlessEye
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
   m_SchemaSet:
