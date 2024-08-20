@@ -20,8 +20,8 @@ MonoBehaviour:
   descriptionToken: FREE_EQUIP_DEATHEYE_DESC
   loreToken: FREE_EQUIP_DEATHEYE_LORE
   pickupIconSprite: {fileID: 21300000, guid: d7c049b837955674eb5042677edea98c, type: 3}
-  unlockableDef: {fileID: 0}
-  colorIndex: 0
+  unlockableDef: {fileID: 11400000, guid: dc2263f3bcc632a40bc7dc3bcf6c3192, type: 2}
+  colorIndex: 4
   canDrop: 1
   dropOnDeathChance: 1
   canBeRandomlyTriggered: 0

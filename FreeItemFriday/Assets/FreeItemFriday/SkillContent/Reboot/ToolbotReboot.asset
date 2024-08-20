@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ToolbotReboot
   m_EditorClassIdentifier: 
   skillName: ToolbotReboot
-  skillNameToken: FIF_SKILL_REBOOT_NAME
-  skillDescriptionToken: FIF_SKILL_REBOOT_DESC
+  skillNameToken: FREE_SKILL_REBOOT_NAME
+  skillDescriptionToken: FREE_SKILL_REBOOT_DESC
   keywordTokens: []
   icon: {fileID: 21300000, guid: 071872e4225f7694c9c622b8175215d2, type: 3}
   activationStateMachineName: Body

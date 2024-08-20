@@ -1,9 +1,11 @@
-using RoR2.ContentManagement;
 using System;
 using System.Collections;
+using System.Security.Cryptography;
+using System.Text;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using HG;
 
 namespace FreeItemFriday
 {
@@ -37,10 +39,19 @@ namespace FreeItemFriday
         {
             GameObject prefab = UnityEngine.Object.Instantiate(original, _prefabParent);
             prefab.name = name;
-            /*if (prefab.TryGetComponent(out NetworkIdentity networkIdentity))
+            if (prefab.GetComponent<NetworkIdentity>())
             {
-                networkIdentity.m_AssetId.Reset();
-            }*/
+                StringBuilder stringBuilder = HG.StringBuilderPool.RentStringBuilder();
+                using (MD5 hasher = MD5.Create())
+                {
+                    foreach (byte b in hasher.ComputeHash(Encoding.UTF8.GetBytes(name + FreeItemFridayPlugin.GUID)))
+                    {
+                        stringBuilder.Append(b.ToString("x2"));
+                    }
+                    ClientScene.RegisterPrefab(prefab, NetworkHash128.Parse(stringBuilder.ToString()));
+                }
+                HG.StringBuilderPool.ReturnStringBuilder(stringBuilder);
+            }
             return prefab;
         }
     }

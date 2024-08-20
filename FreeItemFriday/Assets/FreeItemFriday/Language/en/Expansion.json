@@ -1,6 +1,6 @@
 {
 	"strings": {
-		"FIF_NAME": "Free Item Friday",
-		"FIF_DESCRIPTION": "Adds content from the 'Free Item Friday' mod to the game."
+		"FREE_ITEM_FRIDAY_NAME": "Free Item Friday",
+		"FREE_ITEM_FRIDAY_DESCRIPTION": "Adds content from the 'Free Item Friday' mod to the game."
 	}
 }
