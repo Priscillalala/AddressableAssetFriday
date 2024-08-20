@@ -3,7 +3,8 @@ using RoR2.Achievements;
 
 namespace FreeItemFriday.Achievements
 {
-	[TryRegisterAchievement("CompleteMultiplayerUnknownEnding", "Items.DeathEye", null, typeof(ServerAchievement))]
+	// Match achievement identifiers from FreeItemFriday
+	[TryRegisterAchievement("CompleteMultiplayerUnknownEnding", "Items.FreeItemFriday.DeathEye", null, typeof(ServerAchievement))]
 	public class CompleteMultiplayerUnknownEndingAchievement : BaseAchievement
 	{
 		public override void OnInstall()

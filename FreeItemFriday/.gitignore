@@ -85,3 +85,5 @@ ThunderKit/
 /Packages/*
 !/Packages/packages-lock.json
 !/Packages/manifest.json
+
+/[Aa]ssets/Scenes/SampleScene.unity

@@ -17,7 +17,7 @@ EditorSettings:
   m_EtcTextureNormalCompressor: 2
   m_EtcTextureBestCompressor: 4
   m_ProjectGenerationIncludedExtensions: txt;xml;json;fnt;cd;asmdef;rsp;asmref;uxml
-  m_ProjectGenerationRootNamespace: 
+  m_ProjectGenerationRootNamespace: FreeItemFriday
   m_CollabEditorSettings:
     inProgressEnabled: 1
   m_EnableTextureStreamingInEditMode: 1
