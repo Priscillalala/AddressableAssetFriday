@@ -76,14 +76,20 @@ crashlytics-build.properties
 
 #Thunderkit Related
 /[Aa]ssets/ThunderKitSettings/EditorInspectorSettings.asset
+/[Aa]ssets/ThunderKitSettings/EditorInspectorSettings.asset.meta
 /[Aa]ssets/ThunderKitSettings/RoR2.asset
+/[Aa]ssets/ThunderKitSettings/RoR2.asset.meta
 /[Aa]ssets/ThunderKitSettings/Logs/*
+/[Aa]ssets/ThunderKitSettings/Logs.meta
 /[Aa]ssets/ThunderKitSettings/ThunderKit Extensions.asset
+/[Aa]ssets/ThunderKitSettings/ThunderKit Extensions.asset.meta
 /[Aa]ssets/ThunderKitSettings/ThunderKitSettings.asset
+/[Aa]ssets/ThunderKitSettings/ThunderKitSettings.asset.meta
 ThunderKit/
 
 /Packages/*
 !/Packages/packages-lock.json
 !/Packages/manifest.json
 
-/[Aa]ssets/Scenes/SampleScene.unity
+/[Aa]ssets/Scenes/DevelopmentScene.unity
+/[Aa]ssets/Scenes/DevelopmentScene.unity.meta
