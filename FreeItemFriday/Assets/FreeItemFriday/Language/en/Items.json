@@ -2,6 +2,9 @@
 	"strings": {
 		"FREE_ITEM_THEREMIN_NAME": "Theremin",
 		"FREE_ITEM_THEREMIN_PICKUP": "Increase attack speed near the Teleporter.",
-		"FREE_ITEM_THEREMIN_DESC": "Increase <style=cIsDamage>attack speed</style> by up to <style=cIsDamage>{0} <style=cStack>(+{1} per stack)</style></style> the closer you are to a Teleporter."
+		"FREE_ITEM_THEREMIN_DESC": "Increase <style=cIsDamage>attack speed</style> by up to <style=cIsDamage>{0} <style=cStack>(+{1} per stack)</style></style> the closer you are to a Teleporter.",
+		"FREE_ITEM_ARROWHEAD_NAME": "Flint Arrowhead",
+		"FREE_ITEM_ARROWHEAD_PICKUP": "Burn enemies for flat damage on hit.",
+		"FREE_ITEM_ARROWHEAD_DESC": "<style=cIsDamage>100%</style> chance to <style=cIsDamage>burn</style> on hit for <style=cIsDamage>{0} <style=cStack>(+{1} per stack)</style></style> damage."
 	}
 }

@@ -20,7 +20,10 @@
         "HGUnityUtils.dll",
         "RiskOfOptions.dll",
         "Unity.TextMeshPro.dll",
-        "R2API.RecalculateStats.dll"
+        "R2API.RecalculateStats.dll",
+        "R2API.Colors.dll",
+        "MonoMod.Utils.dll",
+        "Mono.Cecil.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

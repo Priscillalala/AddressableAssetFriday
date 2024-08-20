@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: Arrowhead
+  m_EditorClassIdentifier: 
+  deprecatedTier: 0
+  _itemTierDef: {fileID: 0}
+  nameToken: FREE_ITEM_ARROWHEAD_NAME
+  pickupToken: FREE_ITEM_ARROWHEAD_PICKUP
+  descriptionToken: FREE_ITEM_ARROWHEAD_DESC
+  loreToken: FREE_ITEM_ARROWHEAD_LORE
+  unlockableDef: {fileID: 11400000, guid: 2853c231df3ca4947bb67be9c31a1e31, type: 2}
+  pickupModelPrefab: {fileID: 8624044337690135033, guid: fed37abf589e94543b05a94df8a0172b,
+    type: 3}
+  pickupIconSprite: {fileID: 21300000, guid: 8533236db562a6d45b462a3842a7d49b, type: 3}
+  hidden: 0
+  canRemove: 1
+  tags: 01000000
+  requiredExpansion: {fileID: 11400000, guid: ac60d75f73435b344948fadb51582836, type: 2}

@@ -39,6 +39,7 @@ namespace FreeItemFriday.SkillContent
             contentPack.identifier = identifier;
             AddressablesLoadHelper loadHelper = AddressablesLoadHelper.CreateUsingDefaultResourceLocator("ContentPack:" + identifier);
             loadHelper.AddContentPackLoadOperation(contentPack);
+            loadHelper.AddLoadOperation<FreeSkillVariant>(FreeSkillVariant.LABEL, FreeSkillVariant.allAssets.AddRange);
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Skills), contentPack.skillDefs);
@@ -49,8 +50,7 @@ namespace FreeItemFriday.SkillContent
                 var duration = config.Option(NAME, "Duration", EntityStates.Reboot, nameof(Reboot.baseDuration));
                 LanguageSystem.SetArgs(Skills.ToolbotReboot.skillDescriptionToken, duration);
             }, 0.05f);
-            loadHelper.AddGenericOperation(AddSkill);
-            loadHelper.AddGenericOperation(CreateLegacyPrefabs);
+            loadHelper.AddGenericOperation(CreateLegacyPrefabsAsync);
             while (loadHelper.coroutine.MoveNext())
             {
                 args.ReportProgress(loadHelper.progress.value);
@@ -58,31 +58,18 @@ namespace FreeItemFriday.SkillContent
             }
         }
 
-        public IEnumerator AddSkill()
-        {
-            var ToolbotBodyUtilityFamily = Addressables.LoadAssetAsync<SkillFamily>("RoR2/Base/Toolbot/ToolbotBodyUtilityFamily.asset");
-            while (!ToolbotBodyUtilityFamily.IsDone)
-            {
-                yield return null;
-            }
-            ArrayUtils.ArrayAppend(ref ToolbotBodyUtilityFamily.Result.variants, new SkillFamily.Variant
-            {
-                skillDef = Skills.ToolbotReboot
-            });
-        }
-
-        public IEnumerator CreateLegacyPrefabs()
+        public IEnumerator CreateLegacyPrefabsAsync()
         {
             var RailgunnerOfflineUI = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/RailgunnerOfflineUI.prefab");
             var texRebootUIGear = Addressables.LoadAssetAsync<Sprite>("FreeItemFriday/SkillContent/Reboot/texRebootUIGear.png");
             var Chest1Starburst = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Chest1/Chest1Starburst.prefab");
-            var groupOP = Addressables.ResourceManager.CreateGenericGroupOperation(new List<AsyncOperationHandle>
+            var groupOp = Addressables.ResourceManager.CreateGenericGroupOperation(new List<AsyncOperationHandle>
             {
                 RailgunnerOfflineUI,
                 texRebootUIGear,
                 Chest1Starburst
             }, true);
-            while (!groupOP.IsDone)
+            while (!groupOp.IsDone)
             {
                 yield return null;
             }

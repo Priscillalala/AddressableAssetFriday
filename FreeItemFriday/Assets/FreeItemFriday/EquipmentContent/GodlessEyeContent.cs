@@ -23,11 +23,11 @@ namespace FreeItemFriday.EquipmentContent
             public static EquipmentDef DeathEyeConsumed;
         }
 
-        public static GameObject DelayedDeathHandler { get; private set; }
-
         public static ConfigEntry<float> range;
         public static ConfigEntry<float> duration;
         public static ConfigEntry<int> maxConsecutiveEnemies;
+
+        public static GameObject DelayedDeathHandler { get; private set; }
 
         public override string identifier => "FreeItemFriday.EquipmentContent.GodlessEye";
 
@@ -48,7 +48,7 @@ namespace FreeItemFriday.EquipmentContent
                 maxConsecutiveEnemies = config.Option(NAME, "Maximum Consecutive Enemies", 10);
                 LanguageSystem.SetArgs(Equipment.DeathEye.descriptionToken, range);
             }, 0.05f);
-            loadHelper.AddGenericOperation(LoadModelMaterials);
+            loadHelper.AddGenericOperation(LoadModelMaterialsAsync);
             loadHelper.AddGenericOperation(CreateDelayedDeathHandler);
             while (loadHelper.coroutine.MoveNext())
             {
@@ -57,20 +57,20 @@ namespace FreeItemFriday.EquipmentContent
             }
         }
 
-        public IEnumerator LoadModelMaterials()
+        public IEnumerator LoadModelMaterialsAsync()
         {
             var matMSObeliskLightning = Addressables.LoadAssetAsync<Material>("RoR2/Base/mysteryspace/matMSObeliskLightning.mat");
             var matMSObeliskHeart = Addressables.LoadAssetAsync<Material>("RoR2/Base/mysteryspace/matMSObeliskHeart.mat");
             var matMSStarsLink = Addressables.LoadAssetAsync<Material>("RoR2/Base/mysteryspace/matMSStarsLink.mat");
             var matJellyfishLightning = Addressables.LoadAssetAsync<Material>("RoR2/Base/Common/VFX/matJellyfishLightning.mat");
-            var groupOP = Addressables.ResourceManager.CreateGenericGroupOperation(new List<AsyncOperationHandle>
+            var groupOp = Addressables.ResourceManager.CreateGenericGroupOperation(new List<AsyncOperationHandle>
             {
                 matMSObeliskLightning,
                 matMSObeliskHeart,
                 matMSStarsLink,
                 matJellyfishLightning
             }, true);
-            while (!groupOP.IsDone)
+            while (!groupOp.IsDone)
             {
                 yield return null;
             }
