@@ -14,7 +14,8 @@
     "overrideReferences": true,
     "precompiledReferences": [
         "RoR2.dll",
-        "HGUnityUtils.dll"
+        "HGUnityUtils.dll",
+        "HGCSharpUtils.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

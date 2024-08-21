@@ -1,6 +1,7 @@
 using BepInEx.Configuration;
 using HG;
 using R2API;
+using R2API.ScriptableObjects;
 using RoR2;
 using RoR2.ContentManagement;
 using RoR2.Items;
@@ -22,10 +23,15 @@ namespace FreeItemFriday.ItemContent
             public static ItemDef Arrowhead;
         }
 
+        public static class DamageColors
+        {
+            public static SerializableDamageColor StrongerBurn;
+        }
+
         public static ConfigEntry<float> damage;
         public static ConfigEntry<float> damagePerStack;
 
-        public static DamageColorIndex StrongerBurn { get; private set; } = ColorsAPI.RegisterDamageColor(new Color32(244, 113, 80, 255));
+        //public static DamageColorIndex StrongerBurn { get; private set; } = ColorsAPI.RegisterDamageColor(new Color32(244, 113, 80, 255));
         public static GameObject ImpactArrowhead { get; private set; }
         public static GameObject ImpactArrowheadStronger { get; private set; }
 
@@ -35,11 +41,13 @@ namespace FreeItemFriday.ItemContent
         {
             AddressablesLoadHelper loadHelper = CreateLoadHelper();
             loadHelper.AddContentPackLoadOperation(contentPack);
-            loadHelper.AddLoadOperation<KeyAssetRuleSet>(KeyAssetRuleSet.LABEL, KeyAssetRuleSet.allAssets.AddRange);
+            loadHelper.AddLoadOperation<KeyAssetRuleSet>(KeyAssetRuleSet.LABEL, KeyAssetRuleSet.allAssets.Add);
+            loadHelper.AddDamageColorsLoadOperation();
             loadHelper.AddUpgradeStubbedShadersOperation();
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Items), contentPack.itemDefs);
+                ContentLoadHelper.PopulateTypeFields(typeof(DamageColors), SerializableColorCatalog.damageColors, fieldName => "dc" + fieldName);
             }, 0.05f);
             loadHelper.AddGenericOperation(delegate
             {
@@ -117,7 +125,7 @@ namespace FreeItemFriday.ItemContent
         private static void DotController_InitDotCatalog(On.RoR2.DotController.orig_InitDotCatalog orig)
         {
             orig();
-            DotController.dotDefs[(int)DotController.DotIndex.StrongerBurn].damageColorIndex = StrongerBurn;
+            DotController.dotDefs[(int)DotController.DotIndex.StrongerBurn].damageColorIndex = DamageColors.StrongerBurn.DamageColorIndex;
         }
 
         private static void GlobalEventManager_onHitEnemyAcceptedServer(DamageInfo damageInfo, GameObject victim, uint? dotMaxStacksFromAttacker)

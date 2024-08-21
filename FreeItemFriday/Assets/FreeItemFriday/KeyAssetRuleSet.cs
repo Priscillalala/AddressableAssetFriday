@@ -20,7 +20,7 @@ namespace FreeItemFriday
 
         public const string LABEL = "KeyAssetRuleSet";
 
-        public static readonly List<KeyAssetRuleSet> allAssets = new List<KeyAssetRuleSet>();
+        public static readonly NamedAssetCollection<KeyAssetRuleSet> allAssets = new NamedAssetCollection<KeyAssetRuleSet>(ContentPack.getScriptableObjectName);
 
         static KeyAssetRuleSet()
         {

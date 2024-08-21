@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   focusPointTransform: {fileID: 6979486336192444189}
   cameraPositionTransform: {fileID: 118004891790000393}
-  modelRotation: {x: -0.1213857, y: -0.8605664, z: 0.2421889, w: 0.4313183}
+  modelRotation: {x: -0.000000020521254, y: 0.88294756, z: -0.46947157, w: -0.000000038594862}
   minDistance: 1
   maxDistance: 5
 --- !u!1 &2584594179476550596

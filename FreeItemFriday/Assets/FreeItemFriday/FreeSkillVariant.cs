@@ -14,7 +14,7 @@ namespace FreeItemFriday
     {
         public const string LABEL = "FreeSkillVariant";
 
-        public static readonly List<FreeSkillVariant> allAssets = new List<FreeSkillVariant>();
+        public static readonly NamedAssetCollection<FreeSkillVariant> allAssets = new NamedAssetCollection<FreeSkillVariant>(ContentPack.getScriptableObjectName);
 
         static FreeSkillVariant()
         {

@@ -39,7 +39,7 @@ namespace FreeItemFriday.SkillContent
             contentPack.identifier = identifier;
             AddressablesLoadHelper loadHelper = AddressablesLoadHelper.CreateUsingDefaultResourceLocator("ContentPack:" + identifier);
             loadHelper.AddContentPackLoadOperation(contentPack);
-            loadHelper.AddLoadOperation<FreeSkillVariant>(FreeSkillVariant.LABEL, FreeSkillVariant.allAssets.AddRange);
+            loadHelper.AddLoadOperation<FreeSkillVariant>(FreeSkillVariant.LABEL, FreeSkillVariant.allAssets.Add);
             loadHelper.AddGenericOperation(delegate
             {
                 ContentLoadHelper.PopulateTypeFields(typeof(Skills), contentPack.skillDefs);

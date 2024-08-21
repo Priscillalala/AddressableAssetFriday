@@ -123,5 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: -1479993534, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rendererInfos: []
+  rendererInfos:
+  - renderer: {fileID: 1163282669631804825}
+    defaultMaterial: {fileID: 2100000, guid: a7b0657e46f616748ac434cc37d16a60, type: 2}
+    defaultShadowCastingMode: 1
+    ignoreOverlays: 0
+    hideOnDeath: 0
   hideOnDeathObjects: []

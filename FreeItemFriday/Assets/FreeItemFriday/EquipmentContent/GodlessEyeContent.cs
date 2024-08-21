@@ -35,7 +35,7 @@ namespace FreeItemFriday.EquipmentContent
         {
             AddressablesLoadHelper loadHelper = CreateLoadHelper();
             loadHelper.AddContentPackLoadOperation(contentPack);
-            loadHelper.AddLoadOperation<KeyAssetRuleSet>(KeyAssetRuleSet.LABEL, KeyAssetRuleSet.allAssets.AddRange);
+            loadHelper.AddLoadOperation<KeyAssetRuleSet>(KeyAssetRuleSet.LABEL, KeyAssetRuleSet.allAssets.Add);
             loadHelper.AddUpgradeStubbedShadersOperation();
             loadHelper.AddGenericOperation(delegate
             {
