@@ -88,5 +88,10 @@ namespace FreeItemFriday
                 throw new Exception($"Cannot deserialize type \"{type.FullName}\".");
             }
         }
+
+        public static bool TryFind(this Transform transform, string n, out Transform child)
+        {
+            return child = transform.Find(n);
+        }
     }
 }

@@ -23,7 +23,10 @@
         "R2API.RecalculateStats.dll",
         "R2API.Colors.dll",
         "MonoMod.Utils.dll",
-        "Mono.Cecil.dll"
+        "Mono.Cecil.dll",
+        "KinematicCharacterController.dll",
+        "R2API.DamageType.dll",
+        "R2API.Dot.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

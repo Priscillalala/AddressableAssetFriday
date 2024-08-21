@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: pulsegrenade
+  m_EditorClassIdentifier: 
+  m_GroupName: pulsegrenade
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9a8f45414ad45f54f8b8ac833af18091
+  m_SerializeEntries:
+  - m_GUID: c57096313e4c2034a9104d8dc52ce15f
+    m_Address: FreeItemFriday/SkillContent/PulseGrenade
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 13145882fa5a53e4abe53772cc005276, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e158832b07c29a9408d2d04789e6d517, type: 2}
+    - {fileID: 11400000, guid: e4ce95cef00befb4392559f0c919052d, type: 2}

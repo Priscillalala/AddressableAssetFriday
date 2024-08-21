@@ -34,21 +34,6 @@ namespace FreeItemFriday
             return configEntry;
         }
 
-        public static ConfigEntry<float> Option(this ConfigFile config, string section, string key, EntityStateConfiguration entityStateConfiguration, string fieldName, string description = null, AcceptableValueBase acceptableValues = null)
-        {
-            var configEntry = config.Option(section, key, entityStateConfiguration.GetValue<float>(fieldName), description, acceptableValues);
-            if (configEntry.Value != (float)configEntry.DefaultValue)
-            {
-                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
-            }
-            configEntry.SettingChanged += (sender, args) =>
-            {
-                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
-                EntityStateCatalog.ApplyEntityStateConfiguration(entityStateConfiguration);
-            };
-            return configEntry;
-        }
-
         public static ConfigEntry<int> Option(this ConfigFile config, string section, string key, int defaultValue, string description = null, AcceptableValueBase acceptableValues = null)
         {
             ConfigDescription configDescription = null;
@@ -71,23 +56,6 @@ namespace FreeItemFriday
             return configEntry;
         }
 
-        /*public static ConfigEntryBase Option(this ConfigFile config, string section, string key, EntityStateConfiguration entityStateConfiguration, string fieldName, string description = null, AcceptableValueBase acceptableValues = null)
-        {
-            
-            
-            var configEntry = config.Option(section, key, entityStateConfiguration.GetValue<T>(fieldName), description, acceptableValues);
-            if (configEntry.Value != (T)configEntry.DefaultValue)
-            {
-                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
-            }
-            configEntry.SettingChanged += (sender, args) =>
-            {
-                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
-                EntityStateCatalog.ApplyEntityStateConfiguration(entityStateConfiguration);
-            };
-            return configEntry;
-        }*/
-
         public static ConfigEntry<Percent> Option(this ConfigFile config, string section, string key, Percent defaultValue, string description = null)
         {
             var configEntry = config.Bind(section, key, defaultValue, !string.IsNullOrEmpty(description) ? new ConfigDescription(description) : null);
@@ -106,6 +74,47 @@ namespace FreeItemFriday
                 RiskOfOptionsInterop.AddCheckBoxOption(configEntry);
             }
             return configEntry;
+        }
+
+        public static ConfigEntry<float> BindFloat(this EntityStateConfiguration entityStateConfiguration, ConfigFile configFile, string section, string key, string fieldName, string description = null, AcceptableValueBase acceptableValues = null)
+        {
+            var configEntry = configFile.Option(section, key, entityStateConfiguration.GetValue<float>(fieldName), description, acceptableValues);
+            BindFieldToConfigEntry(entityStateConfiguration, fieldName, configEntry);
+            return configEntry;
+        }
+
+        public static ConfigEntry<int> BindInt(this EntityStateConfiguration entityStateConfiguration, ConfigFile configFile, string section, string key, string fieldName, string description = null, AcceptableValueBase acceptableValues = null)
+        {
+            var configEntry = configFile.Option(section, key, entityStateConfiguration.GetValue<int>(fieldName), description, acceptableValues);
+            BindFieldToConfigEntry(entityStateConfiguration, fieldName, configEntry);
+            return configEntry;
+        }
+
+        public static ConfigEntry<Percent> BindPercent(this EntityStateConfiguration entityStateConfiguration, ConfigFile configFile, string section, string key, string fieldName, string description = null)
+        {
+            var configEntry = configFile.Option(section, key, entityStateConfiguration.GetValue<Percent>(fieldName), description);
+            BindFieldToConfigEntry(entityStateConfiguration, fieldName, configEntry);
+            return configEntry;
+        }
+
+        public static ConfigEntry<bool> BindBool(this EntityStateConfiguration entityStateConfiguration, ConfigFile configFile, string section, string key, string fieldName, string description = null)
+        {
+            var configEntry = configFile.Option(section, key, entityStateConfiguration.GetValue<bool>(fieldName), description);
+            BindFieldToConfigEntry(entityStateConfiguration, fieldName, configEntry);
+            return configEntry;
+        }
+
+        private static void BindFieldToConfigEntry<T>(EntityStateConfiguration entityStateConfiguration, string fieldName, ConfigEntry<T> configEntry)
+        {
+            if (configEntry.BoxedValue != configEntry.DefaultValue)
+            {
+                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
+            }
+            configEntry.SettingChanged += (sender, args) =>
+            {
+                entityStateConfiguration.SetValue(fieldName, configEntry.Value);
+                EntityStateCatalog.ApplyEntityStateConfiguration(entityStateConfiguration);
+            };
         }
     }
 }

@@ -179,6 +179,18 @@ MonoBehaviour:
       assemblyQualifiedName: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     label: Material
+  - assetType:
+      assemblyQualifiedName: FreeItemFriday.FreeSkillVariant, FreeItemFriday, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    label: FreeSkillVariant
+  - assetType:
+      assemblyQualifiedName: R2API.ScriptableObjects.SerializableDamageColor, R2API.Colors,
+        Version=1.0.1.0, Culture=neutral, PublicKeyToken=null
+    label: DamageColor
+  - assetType:
+      assemblyQualifiedName: R2API.ScriptableObjects.SerializableColorCatalogEntry,
+        R2API.Colors, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null
+    label: ColorCatalogEntry
   componentTypeLabels:
   - componentType:
       assemblyQualifiedName: RoR2.CharacterBody, RoR2, Version=0.0.0.0, Culture=neutral,

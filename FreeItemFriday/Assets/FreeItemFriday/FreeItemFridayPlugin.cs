@@ -24,6 +24,9 @@ namespace FreeItemFriday
 	[BepInPlugin(GUID, NAME, VERSION)]
 	[BepInDependency(RiskOfOptions.PluginInfo.PLUGIN_GUID, BepInDependency.DependencyFlags.SoftDependency)]
 	[BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
+	[BepInDependency(R2API.ColorsAPI.PluginGUID)]
+	[BepInDependency(R2API.DamageAPI.PluginGUID)]
+	[BepInDependency(R2API.DotAPI.PluginGUID)]
 	public class FreeItemFridayPlugin : BaseUnityPlugin
 	{
 		public const string 

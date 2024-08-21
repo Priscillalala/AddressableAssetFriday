@@ -30,8 +30,6 @@ namespace FreeItemFriday.SkillContent
             public static EntityStateConfiguration Reboot;
         }
 
-        public static ConfigEntry<float> duration;
-
         public override string identifier => "FreeItemFriday.SkillContent.Reboot";
 
         public override IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
@@ -47,8 +45,8 @@ namespace FreeItemFriday.SkillContent
             }, 0.05f);
             loadHelper.AddGenericOperation(delegate
             {
-                var duration = config.Option(NAME, "Duration", EntityStates.Reboot, nameof(Reboot.baseDuration));
-                LanguageSystem.SetArgs(Skills.ToolbotReboot.skillDescriptionToken, duration);
+                LanguageSystem.SetArgs(Skills.ToolbotReboot.skillDescriptionToken,
+                    EntityStates.Reboot.BindFloat(config, NAME, "Duration", nameof(Reboot.baseDuration)));
             }, 0.05f);
             loadHelper.AddGenericOperation(CreateLegacyPrefabsAsync);
             while (loadHelper.coroutine.MoveNext())
